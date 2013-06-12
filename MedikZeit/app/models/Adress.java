@@ -29,6 +29,11 @@ public class Adress extends Model {
     	this.dateDeleted = dateDeleted;
     	this.Status = Status;
         }
+    
+    public int returnNum()
+    {
+    	return 2;
+    }
 }
     
     		
