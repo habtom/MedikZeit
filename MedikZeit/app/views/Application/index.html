@@ -1,4 +1,619 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-#{welcome /}
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
+  <head>
+    
+            <!-- Analytical Head Init: Chartbeat -->
+            <script type="text/javascript">var _sf_startpt=(new Date()).getTime();</script>
+
+
+
+    <title>MedikZiet - Book your next doctor or dentist appointment online.</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta content="en" http-equiv="Content-Language" /><meta content="mult" name="medium" /><meta content="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" name="csrf-token" /><meta content="authenticity_token" name="csrf-param" /><meta content="103982973218" property="fb:app_id" /><meta content="website" property="og:type" /><meta content="MedikZiet" property="og:site_name" /><meta content="http://www.MedikZiet.com/" property="og:url" /><meta content="MedikZiet - Book your next doctor or dentist appointment online." property="og:title" /><meta content="http://www.MedikZiet.com/images/mark.png?1303189634" property="og:image" />
+    <link href="/stylesheets/compiled/screen.css?1360642710" media="screen" rel="stylesheet" type="text/css" /><link href="/stylesheets/default.css?1303189634" media="screen" rel="stylesheet" type="text/css" /><link href="/stylesheets/compiled/print.css?1360642655" media="print" rel="stylesheet" type="text/css" /><!--[if IE]>
+<link href="/stylesheets/compiled/ie.css?1360642651" media="screen" rel="stylesheet" type="text/css" />
+<![endif]--><style type="text/css">
+  
+    #search-form div.selector, #search-form div.selector select {
+      width: 170px !important;
+    }
+    #search-form div.selector span {
+      width: 138px !important;
+    }
+    
+    #search-form input#search_location {
+      width: 156px !important;
+    }
+
+    #featured-search-form div.selector, #featured-search-form div.selector select {
+      width: 260px !important;
+    }
+    #featured-search-form div.selector span {
+      width: 228px !important;
+    }
+    
+</style>
+    <script src="/javascripts/default.js?1323186857" type="text/javascript"></script><script src="/javascripts/application.js?1303189634" type="text/javascript"></script><script type="text/javascript">
+//<![CDATA[
+$(document).ready(function() {
+  
+    var $searchSpecialty = $('#search-form #search_specialty_ids');
+    var $searchLocationField = $('#search_location');
+    var fetchedFeatured = false;
+    var loc = getCookie('search_location');
+    if (!loc || new String(loc).replace(/\s|,/g, '') == '') {
+      $.getJSON(
+        "http://api.ipinfodb.com/v3/ip-city/?key=12d0366b764412162e789edda94803e1077d77eeebed171b8489618e7e34a620&format=json&callback=?", function(data) {
+          if (data.zipCode != null && data.zipCode != '') {
+            $.cookie('search_location', data.zipCode);
+            $searchLocationField.val(data.zipCode);
+            $searchLocationField.addClass('tv-changed');
+          }
+          else {
+            $.cookie('search_location', data.cityName + ', ' + data.regionName);
+            $searchLocationField.val((data.cityName + ', ' + data.regionName).replace(/\+/g, ' '));
+            $searchLocationField.addClass('tv-changed');
+          }
+          $("#featured-search-form select").change();
+          fetchedFeatured = true;
+        });
+    }
+    
+    $('#search_location').toggleVal({ populateFrom: "title"});
+
+    var savedLocation = getCookie('search_location');
+    if (savedLocation != null && savedLocation != "") {
+      $searchLocationField.val(savedLocation.replace(/\+/g, ' '));
+      $searchLocationField.addClass('tv-changed');
+    }
+
+    var savedCarrier = getCookie('search_insurance_carrier');
+    if (savedCarrier != null && savedCarrier != "") {
+        $('#insurance_carrier_id').val(savedCarrier);
+        var savedPlan = getCookie('search_insurance_plan');
+        if (savedPlan != null) {
+            $('#search_insurance_plan_id').bind('change.cookie', function() {
+                $(this).val(savedPlan);
+                $(this).unbind('change.cookie');
+            });
+        }
+        $('#search_insurance_carrier_id').change();
+    }
+
+    $('#search_insurance_carrier_id').cascade({
+        source: '/insurances/%/plans.json',
+        cascaded: 'search_insurance_plan_id',
+        sourceStartingLabel: "Select a Carrier",
+        dependentStartingLabel: "I'll select later",
+        dependentLoadingLabel: "Loading plans...",
+        onCascade: function() { $.uniform.update("form#search-form select"); }
+    });
+
+    $("#search-form select").uniform({
+      selectClass: 'selector combo_box', 
+      maxSelectChars: 20
+    });
+
+    $("#featured-search-form select").uniform({
+      selectClass: 'selector yellow_small'
+    });
+
+    $("#search-form").submit(function() {
+      var valid = true;
+      if (!valid) {
+        return false;
+      }
+      $(this).find(".toggleval").each(function() {
+        if ($(this).val() == $(this).data("defText")) {
+          $(this).val("");
+        }
+      });
+    });
+
+    $("#featured-search-form select").change(function(){
+      this.form.onsubmit();
+    });
+
+    if (!fetchedFeatured) {
+      $("#featured-search-form select").change();
+    }
+
+    
+
+})
+//]]>
+</script>
+              <!-- Analytical Init: Google -->
+          <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-2543312-15'], ['_setDomainName', ''], ['_trackPageview']);
+            (function() {
+              var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+              ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+          </script>
+
+
+            <!-- Analytical Head Init: Quantcast -->
+            <script type="text/javascript">
+              var _qevents = _qevents || [];
+
+              (function() {
+               var elem = document.createElement('script');
+
+               elem.src = (document.location.protocol == "https:" ? "https://secure" : "http://edge") + ".quantserve.com/quant.js";
+               elem.async = true;
+               elem.type = "text/javascript";
+               var scpt = document.getElementsByTagName('script')[0];
+               scpt.parentNode.insertBefore(elem, scpt);
+              })();
+            </script>
+
+
+  </head>
+<body class="show" id="homes">    
+    <div id="masthead" role="banner">
+      <div id="header">  <h1 id="logo"><a href="/">MedikZiet</a></h1>
+  <div id="menu"><ul>
+<li>
+  <a href="#" class="dropdown"><span>Medical</span></a>
+
+  <div class="submenu one-col">
+    <div class="left">
+      <h4>Medical Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/dermatologists">Dermatologists</a></li>
+            <li><a href="/searches/ents">ENTs</a></li>
+            <li><a href="/searches/general-practitioners">General Practitioners</a></li>
+            <li><a href="/searches/ob-gyns">Gynecologists</a></li>
+            <li><a href="/searches/plastic-surgeons">Plastic Surgeons</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</li>
+<li>
+  <a href="#" class="dropdown"><span>Dental</span></a>
+
+  <div class="submenu one-col">
+    <div class="left">
+      <h4>Dental Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/dentists">Dentists</a></li>
+            <li><a href="/searches/orthodontists">Orthodontists</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</li>
+<li>
+  <a href="#" class="dropdown"><span>Cosmetic</span></a>
+
+  <div class="submenu one-col" style="left: -236px">
+    <div class="left">
+      <h4>Cosmetic Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/dermatologists">Dermatologists</a></li>
+            <li><a href="/searches/plastic-surgeons">Plastic Surgeons</a></li>
+            <li><a href="/searches/dentists">Dentists</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</li>
+<li>
+  <a href="#" class="dropdown"><span>Wellness</span></a>
+
+  <div class="submenu one-col" style="left: -240px">
+    <div class="left">
+      <h4>Wellness Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/chiropractors">Chiropractors</a></li>
+            <li><a href="/searches/nutritionists">Nutritionists</a></li>
+            <li><a href="/searches/podiatrists">Podiatrists</a></li>
+            <li><a href="/searches/physical-therapists">Physical Therapists</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</li>
+</ul>
+<form name="searchForm" role="search">
+</form></div>
+  <div id="user"><ul>
+  <li>
+    <a href="/users/new" class="dropdown">Sign-up</a>
+    <div class="submenu">
+<form action="/users" class="formtastic person" id="new_person_hover" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div><fieldset class="inputs"><legend><span>Sign up to MedikZiet</span></legend><ol>          <input id="appointment_id" name="appointment_id" type="hidden" />
+          <li class="string optional" id="person_first_name_input"><label for="new_person_first_name">First name</label><input autocomplete="off" id="new_person_first_name" maxlength="255" name="person[first_name]" size="50" type="text" /></li>
+          <li class="string optional" id="person_last_name_input"><label for="new_person_last_name">Last name</label><input autocomplete="off" id="new_person_last_name" maxlength="255" name="person[last_name]" size="50" type="text" /></li>
+            <li class="string optional" id="person_user_attributes_email_input"><label for="new_person_user_attributes_email">Email (This will also be your username)</label><input autocomplete="off" id="new_person_user_attributes_email" maxlength="100" name="person[user_attributes][email]" size="50" type="text" /></li> 
+            <li class="password optional" id="person_user_attributes_password_input"><label for="person_user_attributes_password">Password</label><input autocomplete="off" id="person_user_attributes_password" name="person[user_attributes][password]" size="50" type="password" /></li>
+            <li class="password optional" id="person_user_attributes_password_confirmation_input"><label for="person_user_attributes_password_confirmation">Password confirmation</label><input autocomplete="off" id="person_user_attributes_password_confirmation" name="person[user_attributes][password_confirmation]" size="50" type="password" /></li>
+            <li class="boolean optional" id="person_user_attributes_terms_and_conditions_input"><label for="person_user_attributes_terms_and_conditions"><input name="person[user_attributes][terms_and_conditions]" type="hidden" value="0" /><input id="person_user_attributes_terms_and_conditions" name="person[user_attributes][terms_and_conditions]" type="checkbox" value="1" />I have read the <a href="/legal/terms" target="blank">Terms &amp; Conditions</a></label></li>
+</ol></fieldset><fieldset class="buttons"><ol>          <input id="person_submit" name="commit" type="submit" value="Sign-up" /> 
+          <p id="doctor-detour">
+            <a href="/membership/new">I'm a doctor &rarr;</a>
+          </p>
+</ol></fieldset></form>    </div>
+  </li>
+
+  <li>
+    <a href="/login" class="dropdown">Login</a>
+    <div class="submenu">
+      <form action="https://www.MedikZiet.com/session" class="formtastic user_session" id="login_form_hover" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div>
+<fieldset class="inputs"><legend><span>Login to MedikZiet</span></legend><ol>    <li class="string optional" id="user_session_login_input"><label for="login_hover_user_session_login">E-mail</label><input id="login_hover_user_session_login" name="user_session[login]" size="50" type="text" /></li>
+    <li class="password optional" id="user_session_password_input"><label for="user_session_password">Password</label><input id="user_session_password" name="user_session[password]" size="50" type="password" /></li>
+</ol></fieldset><fieldset class="buttons"><ol>    <input id="user_session_submit" name="commit" type="submit" value="Login" />
+</ol></fieldset></form>
+    </div>
+  </li>
+</ul>
+</div>
+</div>
+    </div>
+    <div id="main">
+      <div id="content" role="main">
+  <div id="steps">
+  <ol>
+      <li>
+          <h2>Find a doctor</h2>
+          <img alt="Step_find_doctor" src="/images/step_find_doctor.png?1303189634" />
+          <p>Easily search through local doctors by availability and insurance.</p>
+      </li>
+      <li>
+          <h2>Make an appointment</h2>
+          <img alt="Step_make_an_appt" src="/images/step_make_an_appt.png?1303189634" />
+          <p>View a doctor’s schedule and book your next appointment - instantly.</p>
+      </li>
+      <li>
+          <h2>Manage your health</h2>
+          <img alt="Step_manage_your_health" src="/images/step_manage_your_health.png?1303189634" />
+          <p>Conveniently manage your appointments and set reminders.</p>
+      </li>
+      <li id="steps-start">
+        <h2>Get started</h2>
+<form action="/searches" class="vertical formtastic search" id="search-form" method="post" name="fileterForm"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div><fieldset class="inputs"><ol>            <li><select id="search_specialty_ids" name="search[specialty_ids]"><option value="78">Addiction Medicine</option>
+<option value="15">Adolescent Medicine</option>
+<option value="77">Age Management</option>
+<option value="16">Allergy and Immunology</option>
+<option value="17">Cardiovascular Disease</option>
+<option value="73">Chiropractic Medicine</option>
+<option value="9">Dentistry</option>
+<option value="2">Dermatology</option>
+<option value="22">Diagnostic Radiology</option>
+<option value="40">ENT</option>
+<option value="79">Emergency Medicine</option>
+<option value="24">Endocrinology, Diabetes and Metabolism</option>
+<option value="4">Family Medicine</option>
+<option value="25">Gastroenterology</option>
+<option value="26">Geriatric Medicine</option>
+<option value="30">Infectious Disease</option>
+<option value="5" selected="selected">Internal Medicine</option>
+<option value="34">Nephrology</option>
+<option value="75">Neurology</option>
+<option value="37">Neuromuscular Medicine</option>
+<option value="23">Nutrition</option>
+<option value="6">Obstetrics and Gynecology</option>
+<option value="38">Ophthalmology</option>
+<option value="74">Optometry</option>
+<option value="12">Oral and Maxillofacial Surgery</option>
+<option value="13">Orthodontics</option>
+<option value="39">Orthopedic Surgery</option>
+<option value="14">Pediatric Dentistry</option>
+<option value="10">Pediatrics</option>
+<option value="11">Periodontics</option>
+<option value="58">Physical Medicine and Rehabilitation</option>
+<option value="7">Plastic Surgery</option>
+<option value="61">Podiatry</option>
+<option value="3">Psychiatry</option>
+<option value="63">Pulmonary Disease</option>
+<option value="64">Reproductive Endocrinology/Infertility</option>
+<option value="66">Sleep Medicine</option>
+<option value="68">Sports Medicine</option>
+<option value="69">Surgery</option>
+<option value="71">Urology</option></select></li>
+            <li><select id="search_insurance_carrier_id" name="search[insurance_carrier_id]"><option value="">I'll select my carrier later</option>
+<option value="646">1199SEIU</option>
+<option value="1">AARP</option>
+<option value="3">Aetna</option>
+<option value="33">Affinity Health Plan</option>
+<option value="36">AIG</option>
+<option value="38">Allied Insurance Group</option>
+<option value="43">Altius (Coventry Health Care)</option>
+<option value="47">American Family Insurance</option>
+<option value="50">AmeriChoice by UnitedHealthcare</option>
+<option value="55">Amerigroup</option>
+<option value="61">AmeriHealth</option>
+<option value="67">Anthem Blue Cross Blue Shield (California)</option>
+<option value="92">Anthem Blue Cross Blue Shield (Connecticut)</option>
+<option value="110">Anthem Blue Cross Blue Shield (Virginia)</option>
+<option value="146">Assurant Health Employee Benefits</option>
+<option value="148">Atlantis Health Plan</option>
+<option value="150">Beech Street</option>
+<option value="152">Blue Cross and Blue Shield of Massachusetts</option>
+<option value="168">Blue Cross Blue Shield</option>
+<option value="172">Blue Shield of California</option>
+<option value="648">Building Service 32BJ Health Fund</option>
+<option value="188">CareFirst Blue Cross Blue Shield (Maryland)</option>
+<option value="196">CarePlus Health Plans</option>
+<option value="203">CDPHP</option>
+<option value="211">Celtic Insurance Company</option>
+<option value="213">Cigna</option>
+<option value="219">ConnectiCare</option>
+<option value="229">Definity Health</option>
+<option value="628">Delta Dental</option>
+<option value="643">Elderplan</option>
+<option value="231">Emblem</option>
+<option value="244">Empire Blue Cross Blue Shield (New York)</option>
+<option value="258">Empire Plan</option>
+<option value="260">Excellus Blue Cross Blue Shield (New York)</option>
+<option value="264">Fidelis Care</option>
+<option value="267">First Health (Coventry Health Care)</option>
+<option value="269">Freelancers Insurance Company (BlueCard PPO Network)</option>
+<option value="272">GEHA Health Plans</option>
+<option value="276">GHI</option>
+<option value="286">Golden Rule</option>
+<option value="292">Great West Healthcare</option>
+<option value="299">Guardian</option>
+<option value="303">HAP (Alliance)</option>
+<option value="312">Harvard Pilgrim Healthcare</option>
+<option value="318">Health Net</option>
+<option value="322">HealthSmart Preferred Care</option>
+<option value="324">HIP</option>
+<option value="342">Horizon Blue Cross Blue Shield</option>
+<option value="352">Hudson Health Plus</option>
+<option value="355">Humana</option>
+<option value="370">Kaiser Permanente (California)</option>
+<option value="376">Kaiser Permanente (Maryland, Virginia, And Washington, Dc)</option>
+<option value="380">Kaiser Permanente (Mid-Atlantic Region)</option>
+<option value="383">MagnaCare</option>
+<option value="386">Mamsi</option>
+<option value="634">Medi-Cal</option>
+<option value="391">Medicaid</option>
+<option value="393">Medicare</option>
+<option value="638">MESVision</option>
+<option value="395">Molina</option>
+<option value="398">Multiplan</option>
+<option value="400">Mutual of Omaha</option>
+<option value="406">MVP</option>
+<option value="413">National Capital</option>
+<option value="415">Nationwide</option>
+<option value="417">NewYork-Presbyterian Community Health Plan</option>
+<option value="420">NLI America</option>
+<option value="423">OptimaHealth</option>
+<option value="433">Oxford Health Plans</option>
+<option value="438">PacifiCare</option>
+<option value="450">PHCS</option>
+<option value="452">POMCO</option>
+<option value="455">Premera Blue Cross</option>
+<option value="457">Premera Blue Cross (Washington)</option>
+<option value="462">Principal Financial Group</option>
+<option value="466">Providence</option>
+<option value="480">QualCare</option>
+<option value="483">Rayant</option>
+<option value="490">Regence Blue Shield (Washington)</option>
+<option value="512">Reliance Standard</option>
+<option value="516">SelectHealth</option>
+<option value="527">Sierra</option>
+<option value="540">Significa</option>
+<option value="543">State Farm</option>
+<option value="545">SummaCare</option>
+<option value="550">SutterSelect</option>
+<option value="553">Texas True Choice/Ethix Southwest</option>
+<option value="555">TriCare/TriWest</option>
+<option value="563">Tufts Associated Health Plan</option>
+<option value="568">Unicare</option>
+<option value="584">Union</option>
+<option value="587">UnitedHealthcare</option>
+<option value="606">Unitrin</option>
+<option value="636">VSP</option>
+<option value="608">Vytra</option>
+<option value="611">Wellcare</option>
+<option value="613">Wellmark Blue Cross Blue Shield (Iowa)</option>
+<option value="619">Wellmark Blue Cross Blue Shield (South Dakota)</option>
+<option value="624">Wells Fargo (Acordia)</option>
+<option value="626">Workers&#39; Compensation</option></select></li>
+            <li><select disabled="disabled" id="search_insurance_plan_id" name="search[insurance_plan_id]"><option value="">I'll select my plan later</option>
+</select></li>
+            <li><input class="search_location" id="search_location" name="search[location]" size="30" title="City or zip code" type="text" /></li>
+</ol></fieldset><fieldset class="buttons"><ol>            <input id="search_submit" name="commit" type="submit" value="Find appointment" />
+</ol></fieldset></form>      </li>
+  </ol>
+</div>
+
+<div id="modules">
+
+  <div id="join">
+    <h3>Are you a doctor?</h3>
+    <p>Connect to over 108 Million prospective patients each year.</p>
+    <p>Each month 9 Million prospective patients come to our network’s sites looking for a new doctor. We provide the introduction.</p>
+    <p class="cta"><a href="/membership">Learn About MedikZiet</a></p>
+  </div>
+
+  <div id="featured">
+    <h3>Doctors near you</h3>
+<form action="/home/featured" id="featured-search-form" method="post" name="featuredForm" onsubmit="jQuery.ajax({data:jQuery.param(jQuery(this).serializeArray()) + '&amp;authenticity_token=' + encodeURIComponent('yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE='), success:function(request){jQuery('#featured-result').html(request);}, type:'post', url:'/home/featured'}); return false;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div>      <select id="feature_form_specialty" name="specialty_id"><option value="78">Addiction Medicine</option>
+<option value="15">Adolescent Medicine</option>
+<option value="77">Age Management</option>
+<option value="16">Allergy and Immunology</option>
+<option value="17">Cardiovascular Disease</option>
+<option value="73">Chiropractic Medicine</option>
+<option value="9">Dentistry</option>
+<option value="2">Dermatology</option>
+<option value="22">Diagnostic Radiology</option>
+<option value="40">ENT</option>
+<option value="79">Emergency Medicine</option>
+<option value="24">Endocrinology, Diabetes and Metabolism</option>
+<option value="4">Family Medicine</option>
+<option value="25">Gastroenterology</option>
+<option value="26">Geriatric Medicine</option>
+<option value="30">Infectious Disease</option>
+<option value="5" selected="selected">Internal Medicine</option>
+<option value="34">Nephrology</option>
+<option value="75">Neurology</option>
+<option value="37">Neuromuscular Medicine</option>
+<option value="23">Nutrition</option>
+<option value="6">Obstetrics and Gynecology</option>
+<option value="38">Ophthalmology</option>
+<option value="74">Optometry</option>
+<option value="12">Oral and Maxillofacial Surgery</option>
+<option value="13">Orthodontics</option>
+<option value="39">Orthopedic Surgery</option>
+<option value="14">Pediatric Dentistry</option>
+<option value="10">Pediatrics</option>
+<option value="11">Periodontics</option>
+<option value="58">Physical Medicine and Rehabilitation</option>
+<option value="7">Plastic Surgery</option>
+<option value="61">Podiatry</option>
+<option value="3">Psychiatry</option>
+<option value="63">Pulmonary Disease</option>
+<option value="64">Reproductive Endocrinology/Infertility</option>
+<option value="66">Sleep Medicine</option>
+<option value="68">Sports Medicine</option>
+<option value="69">Surgery</option>
+<option value="71">Urology</option></select>
+</form>    <div id="featured-result">
+      <div class="vcard">
+    No member doctors in your area
+</div>
+    </div>
+  </div>
+  
+  <div id="popular-searches">
+    <h3>Popular searches</h3>
+    <ul>
+      <li><a href="/searches/dentists">Dentist</a></li>
+      <li><a href="/searches/chiropractors">Chiropractors</a></li>
+      <li><a href="/searches/allergists">Allergists</a></li>
+      <li><a href="/searches/dermatologists">Dermatologists</a></li>
+      <li><a href="/searches/general-practitioners">General Practitioners</a></li>
+      <li><a href="/searches/plastic-surgeons">Plastic Surgeons</a></li>
+      <li><a href="/searches/nutritionists">Nutritionists</a></li>
+    </ul>
+  </div>
+</div>
+
+</div>
+    </div>
+    <div id="addendum">
+      
+<div id="footer" role="contentinfo">
+  <dl>
+    <dt>More Information</dt>
+    <dd><a href="/about/contact">About MedikZiet</a></dd>
+    <dd><a href="/about/media">Media</a></dd>
+  </dl>
+  <dl>
+    <dt>For Patients</dt>
+    <dd><a href="/users/new">Sign-up</a></dd>
+    <dd><a href="/login">My MedikZiet</a></dd>
+    <dd><a href="http://www.vitals.com/" target="_blank">Doctor Reviews</a> on Vitals.com</dd>
+  </dl>
+  <dl>
+    <dt>For Doctors</dt>
+    <dd><a href="/membership">Membership</a></dd>
+    <dd><a href="/membership/features">Features</a></dd>
+    <dd><a href="/membership/plans">Plans &amp; Pricing</a></dd>
+    <dd><a href="/membership/new">Sign-up</a></dd>
+  </dl>
+  <dl id="footer-legal">
+    <dt>Legal</dt>
+    <dd><a href="/legal/terms">Terms of Use</a></dd>
+    <dd><a href="/legal/privacy">Privacy Policy</a></dd>
+    <dd id="copyright">&copy; 2011 MDx-HL Holdings, LLC</dd>
+  </dl>
+  <dl id="footer-contact">
+    <dt>Contact</dt>
+    <dd>(201) 842-0760</dd>
+    <dd><a href="http://www.vitals.com/about/contact">Contact Us</a></dd>
+    <dd><a href="http://twitter.com/VitalsCom" id="tw-link">Follow Us</a></dd>
+    <dd><a href="http://www.facebook.com/Vitals" id="fb-link">Like Us</a></dd>
+  </dl>
+</div>
+
+    </div>
+    <form action="https://www.MedikZiet.com/session" id="connect_to_facebook_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div>
+</form>
+<div id="fb-root"></div>
+
+<script type="text/javascript">
+  window.fbAsyncInit = function() {
+    FB.init({appId: '103982973218', status: true, cookie: true, xfbml: true});
+  };
+  (function() {
+    var e = document.createElement('script'); e.async = true;
+    e.src = document.location.protocol +
+      '//connect.facebook.net/en_US/all.js';
+    document.getElementById('fb-root').appendChild(e);
+  }());
+</script>
+    
+            <!-- Analytical Body Init: Chartbeat -->
+            <script type="text/javascript">
+              var _sf_async_config={uid:3479, domain:"MedikZiet.com"};
+              (function(){
+                function loadChartbeat() {
+                  window._sf_endpt=(new Date()).getTime();
+                  var e = document.createElement('script');
+                  e.setAttribute('language', 'javascript');
+                  e.setAttribute('type', 'text/javascript');
+                  e.setAttribute('src',
+                     (("https:" == document.location.protocol) ? "https://s3.amazonaws.com/" : "http://") +
+                     "static.chartbeat.com/js/chartbeat.js");
+                  document.body.appendChild(e);
+                }
+                var oldonload = window.onload;
+                window.onload = (typeof window.onload != 'function') ?
+                   loadChartbeat : function() { oldonload(); loadChartbeat(); };
+              })();
+              </script>
+
+            <!-- Analytical Body Init: Quantcast -->
+            <script type="text/javascript">
+              _qevents.push( { qacct:"p-08aoH5LjXJ932"} );
+              </script>
+              <noscript>
+              <div style="display: none;"><img src="//pixel.quantserve.com/pixel/p-08aoH5LjXJ932.gif" height="1" width="1" alt="Quantcast"/></div>
+              </noscript>
+
+          <!-- Analytical Init: Console -->
+          <script type="text/javascript">
+            if(typeof(console) !== 'undefined' && console != null) {
+              console.log('Analytical Init: Console');
+            }
+          </script>
+
+</body></html>
