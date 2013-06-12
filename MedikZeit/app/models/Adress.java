@@ -34,6 +34,11 @@ public class Adress extends Model {
     {
     	return 2;
     }
+    
+    public int returnNum2()
+    {
+    	return 2;
+    }
 }
     
     		
