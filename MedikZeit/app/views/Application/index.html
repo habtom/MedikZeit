@@ -4,6 +4,7 @@
 
 
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" lang="en">
   <head>
@@ -13,98 +14,28 @@
 
 
 
-    <title>MedikZiet - Book your next doctor or dentist appointment online.</title>
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta content="en" http-equiv="Content-Language" /><meta content="mult" name="medium" /><meta content="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" name="csrf-token" /><meta content="authenticity_token" name="csrf-param" /><meta content="103982973218" property="fb:app_id" /><meta content="website" property="og:type" /><meta content="MedikZiet" property="og:site_name" /><meta content="http://www.MedikZiet.com/" property="og:url" /><meta content="MedikZiet - Book your next doctor or dentist appointment online." property="og:title" /><meta content="http://www.MedikZiet.com/images/mark.png?1303189634" property="og:image" />
+    <title>Dentistry in - on 06/13/2013 - HealthLeap</title>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" /><meta content="en" http-equiv="Content-Language" /><meta content="mult" name="medium" /><meta content="QxSuWs2Ey0pYHTkLxGrOgtULkPct6XiIvZ5lxMOjY3E=" name="csrf-token" /><meta content="authenticity_token" name="csrf-param" /><meta content="103982973218" property="fb:app_id" /><meta content="website" property="og:type" /><meta content="HealthLeap" property="og:site_name" /><meta content="http://www.healthleap.com/searches/c4d8387815f4f717fa88e32f033634d8137114093292575" property="og:url" /><meta content="Dentistry in - on 06/13/2013 - HealthLeap" property="og:title" /><meta content="http://www.healthleap.com/images/mark.png?1303189634" property="og:image" /><meta content="3601" http-equiv="refresh" />
     <link href="/stylesheets/compiled/screen.css?1360642710" media="screen" rel="stylesheet" type="text/css" /><link href="/stylesheets/default.css?1303189634" media="screen" rel="stylesheet" type="text/css" /><link href="/stylesheets/compiled/print.css?1360642655" media="print" rel="stylesheet" type="text/css" /><!--[if IE]>
 <link href="/stylesheets/compiled/ie.css?1360642651" media="screen" rel="stylesheet" type="text/css" />
-<![endif]--><style type="text/css">
+<![endif]--><style type="text/css">  
+    #search-form div.selector select {
+      width: 150px !important; /* makes the down arrow clickable (opens options list) */
+    }
   
-    #search-form div.selector, #search-form div.selector select {
-      width: 170px !important;
-    }
-    #search-form div.selector span {
-      width: 138px !important;
-    }
-    
-    #search-form input#search_location {
-      width: 156px !important;
-    }
-
-    #featured-search-form div.selector, #featured-search-form div.selector select {
-      width: 260px !important;
-    }
-    #featured-search-form div.selector span {
-      width: 228px !important;
-    }
-    
 </style>
-    <script src="/javascripts/default.js?1323186857" type="text/javascript"></script><script src="/javascripts/application.js?1303189634" type="text/javascript"></script><script type="text/javascript">
+    <script src="/javascripts/default.js?1323186857" type="text/javascript"></script><script src="/javascripts/jquery.cascade-select.js?1323186857" type="text/javascript"></script><script src="/javascripts/application.js?1303189634" type="text/javascript"></script><script type="text/javascript">
 //<![CDATA[
 $(document).ready(function() {
   
-    var $searchSpecialty = $('#search-form #search_specialty_ids');
     var $searchLocationField = $('#search_location');
-    var fetchedFeatured = false;
-    var loc = getCookie('search_location');
-    if (!loc || new String(loc).replace(/\s|,/g, '') == '') {
-      $.getJSON(
-        "http://api.ipinfodb.com/v3/ip-city/?key=12d0366b764412162e789edda94803e1077d77eeebed171b8489618e7e34a620&format=json&callback=?", function(data) {
-          if (data.zipCode != null && data.zipCode != '') {
-            $.cookie('search_location', data.zipCode);
-            $searchLocationField.val(data.zipCode);
-            $searchLocationField.addClass('tv-changed');
-          }
-          else {
-            $.cookie('search_location', data.cityName + ', ' + data.regionName);
-            $searchLocationField.val((data.cityName + ', ' + data.regionName).replace(/\+/g, ' '));
-            $searchLocationField.addClass('tv-changed');
-          }
-          $("#featured-search-form select").change();
-          fetchedFeatured = true;
-        });
-    }
-    
-    $('#search_location').toggleVal({ populateFrom: "title"});
-
-    var savedLocation = getCookie('search_location');
-    if (savedLocation != null && savedLocation != "") {
-      $searchLocationField.val(savedLocation.replace(/\+/g, ' '));
-      $searchLocationField.addClass('tv-changed');
-    }
-
-    var savedCarrier = getCookie('search_insurance_carrier');
-    if (savedCarrier != null && savedCarrier != "") {
-        $('#insurance_carrier_id').val(savedCarrier);
-        var savedPlan = getCookie('search_insurance_plan');
-        if (savedPlan != null) {
-            $('#search_insurance_plan_id').bind('change.cookie', function() {
-                $(this).val(savedPlan);
-                $(this).unbind('change.cookie');
-            });
-        }
-        $('#search_insurance_carrier_id').change();
-    }
-
-    $('#search_insurance_carrier_id').cascade({
-        source: '/insurances/%/plans.json',
-        cascaded: 'search_insurance_plan_id',
-        sourceStartingLabel: "Select a Carrier",
-        dependentStartingLabel: "I'll select later",
-        dependentLoadingLabel: "Loading plans...",
-        onCascade: function() { $.uniform.update("form#search-form select"); }
-    });
-
-    $("#search-form select").uniform({
-      selectClass: 'selector combo_box', 
-      maxSelectChars: 20
-    });
-
-    $("#featured-search-form select").uniform({
-      selectClass: 'selector yellow_small'
-    });
 
     $("#search-form").submit(function() {
       var valid = true;
+      if (valid && isEmptyOrDefaultValue($searchLocationField)) {
+        $searchLocationField.effect("highlight", {}, 3000);
+        valid = false;
+      }
       if (!valid) {
         return false;
       }
@@ -115,15 +46,35 @@ $(document).ready(function() {
       });
     });
 
-    $("#featured-search-form select").change(function(){
-      this.form.onsubmit();
+    $('#search_insurance_carrier_id').cascade({
+        source: '/insurances/%/plans.json',
+        cascaded: 'search_insurance_plan_id',
+        sourceStartingLabel: "Select a Carrier",
+        dependentStartingLabel: "I'll select later",
+        dependentLoadingLabel: "Loading plans..."
     });
 
-    if (!fetchedFeatured) {
-      $("#featured-search-form select").change();
-    }
+    $('#search_specialty_ids').cascade({
+      source: '/appointment_types.json',
+      cascaded: 'search_appointment_type_ids',
+      sourceStartingLabel: 'Select a Specialty',
+      dependentStartingLabel: '',
+      dependentLoadingLabel: 'Loading reasons...',
+      extraParams: {specialties: function() {
+        return $('#search_specialty_ids').val();
+      }},
+      onCascade: function() {
+        $('#search_appointment_type_ids').val('42').change();
+      }
+    });
 
-    
+    $("#search-form select").uniform( { 
+      selectClass: 'selector blue_small',
+      maxSelectChars: 15 
+    } );
+
+    $(".datepicker").datepicker();
+  
 
 })
 //]]>
@@ -157,74 +108,137 @@ $(document).ready(function() {
 
 
   </head>
-<body class="show" id="homes">    
+<body class="show" id="searches">    
     <div id="masthead" role="banner">
-      <div id="header">  <h1 id="logo"><a href="/">MedikZiet</a></h1>
+      <div id="header">  <div id="logo"><a href="/practitioners/hgfhvjh/dashboard">HealthLeap</a></div>
   <div id="menu"><ul>
+<li>
+  <a href="#" class="dropdown"><span>Medical</span></a>
 
+  <div class="submenu one-col">
+    <div class="left">
+      <h4>Medical Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/dermatologists">Dermatologists</a></li>
+            <li><a href="/searches/ents">ENTs</a></li>
+            <li><a href="/searches/general-practitioners">General Practitioners</a></li>
+            <li><a href="/searches/ob-gyns">Gynecologists</a></li>
+            <li><a href="/searches/plastic-surgeons">Plastic Surgeons</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</li>
+<li>
+  <a href="#" class="dropdown"><span>Dental</span></a>
+
+  <div class="submenu one-col">
+    <div class="left">
+      <h4>Dental Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/dentists">Dentists</a></li>
+            <li><a href="/searches/orthodontists">Orthodontists</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</li>
+<li>
+  <a href="#" class="dropdown"><span>Cosmetic</span></a>
+
+  <div class="submenu one-col" style="left: -236px">
+    <div class="left">
+      <h4>Cosmetic Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/dermatologists">Dermatologists</a></li>
+            <li><a href="/searches/plastic-surgeons">Plastic Surgeons</a></li>
+            <li><a href="/searches/dentists">Dentists</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</li>
+<li>
+  <a href="#" class="dropdown"><span>Wellness</span></a>
+
+  <div class="submenu one-col" style="left: -240px">
+    <div class="left">
+      <h4>Wellness Specialties</h4>
+
+      <div class="col-wrapper">
+        <div class="col first">
+          <ul class="links">
+            <li><a href="/searches/chiropractors">Chiropractors</a></li>
+            <li><a href="/searches/nutritionists">Nutritionists</a></li>
+            <li><a href="/searches/podiatrists">Podiatrists</a></li>
+            <li><a href="/searches/physical-therapists">Physical Therapists</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</li>
 </ul>
 <form name="searchForm" role="search">
 </form></div>
-  <div id="user"><ul>
-  <li>
-    <a href="/users/new" class="dropdown">Sign-up</a>
-    <div class="submenu">
-<form action="/users" class="formtastic person" id="new_person_hover" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div><fieldset class="inputs"><legend><span>Sign up to MedikZiet</span></legend><ol>          <input id="appointment_id" name="appointment_id" type="hidden" />
-          <li class="string optional" id="person_first_name_input"><label for="new_person_first_name">First name</label><input autocomplete="off" id="new_person_first_name" maxlength="255" name="person[first_name]" size="50" type="text" /></li>
-          <li class="string optional" id="person_last_name_input"><label for="new_person_last_name">Last name</label><input autocomplete="off" id="new_person_last_name" maxlength="255" name="person[last_name]" size="50" type="text" /></li>
-            <li class="string optional" id="person_user_attributes_email_input"><label for="new_person_user_attributes_email">Email (This will also be your username)</label><input autocomplete="off" id="new_person_user_attributes_email" maxlength="100" name="person[user_attributes][email]" size="50" type="text" /></li> 
-            <li class="password optional" id="person_user_attributes_password_input"><label for="person_user_attributes_password">Password</label><input autocomplete="off" id="person_user_attributes_password" name="person[user_attributes][password]" size="50" type="password" /></li>
-            <li class="password optional" id="person_user_attributes_password_confirmation_input"><label for="person_user_attributes_password_confirmation">Password confirmation</label><input autocomplete="off" id="person_user_attributes_password_confirmation" name="person[user_attributes][password_confirmation]" size="50" type="password" /></li>
-            <li class="boolean optional" id="person_user_attributes_terms_and_conditions_input"><label for="person_user_attributes_terms_and_conditions"><input name="person[user_attributes][terms_and_conditions]" type="hidden" value="0" /><input id="person_user_attributes_terms_and_conditions" name="person[user_attributes][terms_and_conditions]" type="checkbox" value="1" />I have read the <a href="/legal/terms" target="blank">Terms &amp; Conditions</a></label></li>
-</ol></fieldset><fieldset class="buttons"><ol>          <input id="person_submit" name="commit" type="submit" value="Sign-up" /> 
-          <p id="doctor-detour">
-            <a href="/membership/new">I'm a doctor &rarr;</a>
-          </p>
-</ol></fieldset></form>    </div>
-  </li>
-
-  <li>
-    <a href="/login" class="dropdown">Login</a>
-    <div class="submenu">
-      <form action="https://www.MedikZiet.com/session" class="formtastic user_session" id="login_form_hover" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div>
-<fieldset class="inputs"><legend><span>Login to MedikZiet</span></legend><ol>    <li class="string optional" id="user_session_login_input"><label for="login_hover_user_session_login">E-mail</label><input id="login_hover_user_session_login" name="user_session[login]" size="50" type="text" /></li>
-    <li class="password optional" id="user_session_password_input"><label for="user_session_password">Password</label><input id="user_session_password" name="user_session[password]" size="50" type="password" /></li>
-</ol></fieldset><fieldset class="buttons"><ol>    <input id="user_session_submit" name="commit" type="submit" value="Login" />
-</ol></fieldset></form>
-    </div>
-  </li>
-</ul>
+  <div id="user">
+  Logged in as <a href="/practitioners/hgfhvjh/edit">Elsa Bakiu</a>
 </div>
 </div>
     </div>
     <div id="main">
       <div id="content" role="main">
-  <div id="steps">
-  <ol>
-      <li>
-          <h2>Find a doctor</h2>
-          <img alt="Step_find_doctor" src="/images/step_find_doctor.png?1303189634" />
-          <p>Easily search through local doctors by availability and insurance.</p>
-      </li>
-      <li>
-          <h2>Make an appointment</h2>
-          <img alt="Step_make_an_appt" src="/images/step_make_an_appt.png?1303189634" />
-          <p>View a doctor’s schedule and book your next appointment - instantly.</p>
-      </li>
-      <li>
-          <h2>Manage your health</h2>
-          <img alt="Step_manage_your_health" src="/images/step_manage_your_health.png?1303189634" />
-          <p>Conveniently manage your appointments and set reminders.</p>
-      </li>
-      <li id="steps-start">
-        <h2>Get started</h2>
-<form action="/searches" class="vertical formtastic search" id="search-form" method="post" name="fileterForm"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div><fieldset class="inputs"><ol>            <li><select id="search_specialty_ids" name="search[specialty_ids]"><option value="78">Addiction Medicine</option>
+    
+
+
+<div id="search-box">
+  <h1>
+    Dentistry in - on 06/13/2013
+  </h1>
+
+  <div id="search-mode">
+      <ul>
+        <li><a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575" class="list active">List</a></li>
+        <li><a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575/panels" class="card">Panels</a></li>
+        <li><a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575/map" class="map">Map</a></li>
+      </ul>
+  </div>
+  <!-- end mode -->
+
+<form action="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575" class="vertical" id="search-form" method="post" name="fileterForm"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put" /><input name="authenticity_token" type="hidden" value="QxSuWs2Ey0pYHTkLxGrOgtULkPct6XiIvZ5lxMOjY3E=" /></div>    <input type="hidden" name="view" value="list" id="view">
+    <fieldset>
+      <ol>
+        <li>
+          <label for="field-specialty">Specialty</label>
+          <select id="search_specialty_ids" name="search[specialty_ids]"><option value="78">Addiction Medicine</option>
 <option value="15">Adolescent Medicine</option>
 <option value="77">Age Management</option>
 <option value="16">Allergy and Immunology</option>
 <option value="17">Cardiovascular Disease</option>
 <option value="73">Chiropractic Medicine</option>
-<option value="9">Dentistry</option>
+<option value="9" selected="selected">Dentistry</option>
 <option value="2">Dermatology</option>
 <option value="22">Diagnostic Radiology</option>
 <option value="40">ENT</option>
@@ -234,7 +248,7 @@ $(document).ready(function() {
 <option value="25">Gastroenterology</option>
 <option value="26">Geriatric Medicine</option>
 <option value="30">Infectious Disease</option>
-<option value="5" selected="selected">Internal Medicine</option>
+<option value="5">Internal Medicine</option>
 <option value="34">Nephrology</option>
 <option value="75">Neurology</option>
 <option value="37">Neuromuscular Medicine</option>
@@ -257,8 +271,19 @@ $(document).ready(function() {
 <option value="66">Sleep Medicine</option>
 <option value="68">Sports Medicine</option>
 <option value="69">Surgery</option>
-<option value="71">Urology</option></select></li>
-            <li><select id="search_insurance_carrier_id" name="search[insurance_carrier_id]"><option value="">I'll select my carrier later</option>
+<option value="71">Urology</option></select>
+        </li>
+        <li>
+          <label for="field-reason">Reason</label>
+          <select id="search_appointment_type_ids" name="search[appointment_type_ids]"></select>
+        </li>
+        <li>
+          <label for="field-when">When</label>
+          <input alt="mm/dd/yyyy" class="datepicker" id="search_date_range" name="search[date_range]" size="30" type="text" value="06/13/2013" />
+        </li>
+        <li>
+          <label for="field-insurance">Insurance</label>
+          <select id="search_insurance_carrier_id" name="search[insurance_carrier_id]"><option value="">I'll select my carrier later</option>
 <option value="646">1199SEIU</option>
 <option value="1">AARP</option>
 <option value="3">Aetna</option>
@@ -358,86 +383,485 @@ $(document).ready(function() {
 <option value="613">Wellmark Blue Cross Blue Shield (Iowa)</option>
 <option value="619">Wellmark Blue Cross Blue Shield (South Dakota)</option>
 <option value="624">Wells Fargo (Acordia)</option>
-<option value="626">Workers&#39; Compensation</option></select></li>
-            <li><select disabled="disabled" id="search_insurance_plan_id" name="search[insurance_plan_id]"><option value="">I'll select my plan later</option>
-</select></li>
-            <li><input class="search_location" id="search_location" name="search[location]" size="30" title="City or zip code" type="text" /></li>
-</ol></fieldset><fieldset class="buttons"><ol>            <input id="search_submit" name="commit" type="submit" value="Find appointment" />
-</ol></fieldset></form>      </li>
-  </ol>
-</div>
+<option value="626">Workers&#39; Compensation</option></select>
+        </li>
+        <li>
+          <label for="field-insurance-plan">Insurance Plan</label>
+          <select html_options="disabledtrue" id="search_insurance_plan_id" name="search[insurance_plan_id]"><option value="">I'll select later</option>
+</select>
+        </li>
+        <li>
+          <label for="field-zip">Location</label>
+          <input alt="City or zip code" id="search_location" name="search[location]" size="30" type="text" value="-" />
+        </li>
+        <li class="last">
+          <input type="submit" name="submit" value="Update"/>
+        </li>
+      </ol>
+    </fieldset>
 
-<div id="modules">
+</form>
+</div><!-- end search-box -->
 
-  <div id="join">
-    <h3>Are you a doctor?</h3>
-    <p>Connect to over 108 Million prospective patients each year.</p>
-    <p>Each month 9 Million prospective patients come to our network’s sites looking for a new doctor. We provide the introduction.</p>
-    <p class="cta"><a href="/membership">Learn About MedikZiet</a></p>
-  </div>
-
-  <div id="featured">
-    <h3>Doctors near you</h3>
-<form action="/home/featured" id="featured-search-form" method="post" name="featuredForm" onsubmit="jQuery.ajax({data:jQuery.param(jQuery(this).serializeArray()) + '&amp;authenticity_token=' + encodeURIComponent('yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE='), success:function(request){jQuery('#featured-result').html(request);}, type:'post', url:'/home/featured'}); return false;"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div>      <select id="feature_form_specialty" name="specialty_id"><option value="78">Addiction Medicine</option>
-<option value="15">Adolescent Medicine</option>
-<option value="77">Age Management</option>
-<option value="16">Allergy and Immunology</option>
-<option value="17">Cardiovascular Disease</option>
-<option value="73">Chiropractic Medicine</option>
-<option value="9">Dentistry</option>
-<option value="2">Dermatology</option>
-<option value="22">Diagnostic Radiology</option>
-<option value="40">ENT</option>
-<option value="79">Emergency Medicine</option>
-<option value="24">Endocrinology, Diabetes and Metabolism</option>
-<option value="4">Family Medicine</option>
-<option value="25">Gastroenterology</option>
-<option value="26">Geriatric Medicine</option>
-<option value="30">Infectious Disease</option>
-<option value="5" selected="selected">Internal Medicine</option>
-<option value="34">Nephrology</option>
-<option value="75">Neurology</option>
-<option value="37">Neuromuscular Medicine</option>
-<option value="23">Nutrition</option>
-<option value="6">Obstetrics and Gynecology</option>
-<option value="38">Ophthalmology</option>
-<option value="74">Optometry</option>
-<option value="12">Oral and Maxillofacial Surgery</option>
-<option value="13">Orthodontics</option>
-<option value="39">Orthopedic Surgery</option>
-<option value="14">Pediatric Dentistry</option>
-<option value="10">Pediatrics</option>
-<option value="11">Periodontics</option>
-<option value="58">Physical Medicine and Rehabilitation</option>
-<option value="7">Plastic Surgery</option>
-<option value="61">Podiatry</option>
-<option value="3">Psychiatry</option>
-<option value="63">Pulmonary Disease</option>
-<option value="64">Reproductive Endocrinology/Infertility</option>
-<option value="66">Sleep Medicine</option>
-<option value="68">Sports Medicine</option>
-<option value="69">Surgery</option>
-<option value="71">Urology</option></select>
-</form>    <div id="featured-result">
-      <div class="vcard">
-    No member doctors in your area
-</div>
-    </div>
-  </div>
   
-  <div id="popular-searches">
-    <h3>Popular searches</h3>
-    <ul>
-      <li><a href="/searches/dentists">Dentist</a></li>
-      <li><a href="/searches/chiropractors">Chiropractors</a></li>
-      <li><a href="/searches/allergists">Allergists</a></li>
-      <li><a href="/searches/dermatologists">Dermatologists</a></li>
-      <li><a href="/searches/general-practitioners">General Practitioners</a></li>
-      <li><a href="/searches/plastic-surgeons">Plastic Surgeons</a></li>
-      <li><a href="/searches/nutritionists">Nutritionists</a></li>
-    </ul>
+<div id="search-results" class="list">
+  <ul>
+        <li>
+  <div class="vcard">
+      <h4><a href="/dr-stephen-lockwood">Dr. Stephen Lockwood</a></h4>
+      <a href="/dr-stephen-lockwood" alt="Dr. Stephen Lockwood photo" class="photo"><img alt="Small" height="120" src="https://s3.amazonaws.com/assets.healthleap.com/people/photos/556/small.jpg?1266798440" width="90" /></a>
+      <div class="adr"><p class="street-address">4150 Regents Park Row, Suite 230 </p><p><span class="locality">La Jolla</span>, <abbr class="region" title="CA">CA</abbr></p><p class="postal-code">92037</p></div>
+      <div class="meta">
+        <a href="/practitioners/dr-stephen-lockwood/map" class="trigger-popup-map">Map</a>
+      </div>
   </div>
+
+  <div class="bio">
+      <h5>About Dr. Lockwood</h5>
+    
+    <p class="bio-text">Dr. Lockwood has been in private practice in La Jolla since 1985. His quest for the highest level of skill in dentistry has been recognized with a Mastership Award from the prestigious and nationally recognized Academy of General Dentistry. To receive the... <a href="/dr-stephen-lockwood">(more)</a></p>
+  </div>
+
+  <div class="appts">
+    
+<form style="display:none">
+  <input id="start_date" name="start_date" type="hidden" value="2013-06-13" />
+  <input id="end_date" name="end_date" type="hidden" value="2013-06-17" />
+  <input id="next_date" name="next_date" type="hidden" value="2013-06-18" />
+  <input id="previous_date" name="previous_date" type="hidden" value="2013-06-08" />
+</form>
+
+<table class="appointments" style="float:left;">
+  <thead>
+  <tr>
+        <th><strong>Thu.</strong>06/13/13</th>
+        <th><strong>Fri.</strong>06/14/13</th>
+        <th><strong>Sat.</strong>06/15/13</th>
+        <th><strong>Sun.</strong>06/16/13</th>
+        <th><strong>Mon.</strong>06/17/13</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+            <a href="/appointments/Wzc1NCw1MjYsNDIsMTgsMTM3MTE0NjQwMC4wLDEzNzExNTAwMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">11:00AM</a>
+          </td>
+          <td>
+            <a href="/appointments/Wzc1Niw1MjYsNDIsMTgsMTM3MTIyMjAwMC4wLDEzNzEyMjU2MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">08:00AM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/Wzc1MCw1MjYsNDIsMTgsMTM3MTQ3NzYwMC4wLDEzNzE0ODEyMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">07:00AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/Wzc1NCw1MjYsNDIsMTgsMTM3MTE1MzYwMC4wLDEzNzExNTcyMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">01:00PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/Wzc1MCw1MjYsNDIsMTgsMTM3MTQ5MjAwMC4wLDEzNzE0OTU2MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">11:00AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/Wzc1MCw1MjYsNDIsMTgsMTM3MTUwNjQwMC4wLDEzNzE1MTAwMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">03:00PM</a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+  </div>
+</li>
+
+        <li>
+  <div class="vcard">
+      <h4><a href="/walleyworlddental">Dr. Robert Walley</a></h4>
+      <a href="/walleyworlddental" alt="Dr. Robert Walley photo" class="photo"><img alt="Small" height="120" src="https://s3.amazonaws.com/assets.healthleap.com/people/photos/571/small.jpg?1269893670" width="90" /></a>
+      <div class="adr"><p class="street-address">490 Post St #1205</p><p><span class="locality">San Francisco</span>, <abbr class="region" title="CA">CA</abbr></p><p class="postal-code">94102</p></div>
+      <div class="meta">
+        <a href="/practitioners/walleyworlddental/map" class="trigger-popup-map">Map</a>
+      </div>
+  </div>
+
+  <div class="bio">
+      <h5>About Dr. Walley</h5>
+    
+    <p class="bio-text">Dr. Walley has been providing excellent cosmetic and restorative dentistry in San Francisco for 40 years.  He is an expert in all aspects of dentistry including root canals, fillings, inlays, and more. He recently started providing patients with Invisalign ... <a href="/walleyworlddental">(more)</a></p>
+  </div>
+
+  <div class="appts">
+    
+<form style="display:none">
+  <input id="start_date" name="start_date" type="hidden" value="2013-06-13" />
+  <input id="end_date" name="end_date" type="hidden" value="2013-06-17" />
+  <input id="next_date" name="next_date" type="hidden" value="2013-06-18" />
+  <input id="previous_date" name="previous_date" type="hidden" value="2013-06-08" />
+</form>
+
+<table class="appointments" style="float:left;">
+  <thead>
+  <tr>
+        <th><strong>Thu.</strong>06/13/13</th>
+        <th><strong>Fri.</strong>06/14/13</th>
+        <th><strong>Sat.</strong>06/15/13</th>
+        <th><strong>Sun.</strong>06/16/13</th>
+        <th><strong>Mon.</strong>06/17/13</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzQxMiw1MzcsNDIsMjksMTM3MTQ5NTYwMC4wLDEzNzE0OTkyMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">12:00PM</a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+  </div>
+</li>
+
+        <li>
+  <div class="vcard">
+      <h4><a href="/dr-brent-ort">Dr. Brent Ort</a></h4>
+      <a href="/dr-brent-ort" alt="Dr. Brent Ort photo" class="photo"><img alt="Small" height="120" src="https://s3.amazonaws.com/assets.healthleap.com/people/photos/574/small.png?1266621369" width="90" /></a>
+      <div class="adr"><p class="street-address">490 Post Street, Suite 412</p><p><span class="locality">San Francisco</span>, <abbr class="region" title="CA">CA</abbr></p><p class="postal-code">94102</p></div>
+      <div class="meta">
+        <a href="/practitioners/dr-brent-ort/map" class="trigger-popup-map">Map</a>
+      </div>
+  </div>
+
+  <div class="bio">
+      <h5>About Dr. Ort</h5>
+    
+    <p class="bio-text">  After practicing the art of dental health for the last 34 years, Brent Ort has decided to take his practice to the next level. 
+    For the last 34 years Dr. Ort has had very minimal turnover when it comes to patients. The reason for this is his passion for e... <a href="/dr-brent-ort">(more)</a></p>
+  </div>
+
+  <div class="appts">
+    
+<form style="display:none">
+  <input id="start_date" name="start_date" type="hidden" value="2013-06-13" />
+  <input id="end_date" name="end_date" type="hidden" value="2013-06-17" />
+  <input id="next_date" name="next_date" type="hidden" value="2013-06-18" />
+  <input id="previous_date" name="previous_date" type="hidden" value="2013-06-08" />
+</form>
+
+<table class="appointments" style="float:left;">
+  <thead>
+  <tr>
+        <th><strong>Thu.</strong>06/13/13</th>
+        <th><strong>Fri.</strong>06/14/13</th>
+        <th><strong>Sat.</strong>06/15/13</th>
+        <th><strong>Sun.</strong>06/16/13</th>
+        <th><strong>Mon.</strong>06/17/13</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+            <a href="/appointments/WzU0NCw1NDAsNDIsMzIsMTM3MTE2NDQwMC4wLDEzNzExNjgwMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">04:00PM</a>
+          </td>
+          <td>
+            <a href="/appointments/WzU0NSw1NDAsNDIsMzIsMTM3MTIyMjAwMC4wLDEzNzEyMjU2MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">08:00AM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzU0Miw1NDAsNDIsMzIsMTM3MTQ4MTIwMC4wLDEzNzE0ODQ4MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">08:00AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzU0NSw1NDAsNDIsMzIsMTM3MTI0MzYwMC4wLDEzNzEyNDcyMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">02:00PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzU0Miw1NDAsNDIsMzIsMTM3MTQ4ODQwMC4wLDEzNzE0OTIwMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">10:00AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzU0Miw1NDAsNDIsMzIsMTM3MTUwMjgwMC4wLDEzNzE1MDY0MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">02:00PM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzU0Miw1NDAsNDIsMzIsMTM3MTUxMDAwMC4wLDEzNzE1MTM2MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">04:00PM</a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+  </div>
+</li>
+
+        <li>
+  <div class="vcard">
+      <h4><a href="/modernfamilydental">Dr. Hao Tran</a></h4>
+      <a href="/modernfamilydental" alt="Dr. Hao Tran photo" class="photo"><img alt="Small" height="120" src="https://s3.amazonaws.com/assets.healthleap.com/people/photos/577/small.jpg?1269629745" width="90" /></a>
+      <div class="adr"><p class="street-address">500 Spruce St. #203</p><p><span class="locality">San Francisco</span>, <abbr class="region" title="CA">CA</abbr></p><p class="postal-code">94118</p></div>
+      <div class="meta">
+        <a href="/practitioners/modernfamilydental/map" class="trigger-popup-map">Map</a>
+      </div>
+  </div>
+
+  <div class="bio">
+      <h5>About Dr. Tran</h5>
+    
+    <p class="bio-text">Dr. Tran has been providing excellent dentistry in San Francisco, Solano and Sacramento Counties, and New York City.  He is now settled in San Francisco and established his own practice in the charming Laurel Heights neighborhood.  He is often described by... <a href="/modernfamilydental">(more)</a></p>
+  </div>
+
+  <div class="appts">
+    
+<form style="display:none">
+  <input id="start_date" name="start_date" type="hidden" value="2013-06-13" />
+  <input id="end_date" name="end_date" type="hidden" value="2013-06-17" />
+  <input id="next_date" name="next_date" type="hidden" value="2013-06-18" />
+  <input id="previous_date" name="previous_date" type="hidden" value="2013-06-08" />
+</form>
+
+<table class="appointments" style="float:left;">
+  <thead>
+  <tr>
+        <th><strong>Thu.</strong>06/13/13</th>
+        <th><strong>Fri.</strong>06/14/13</th>
+        <th><strong>Sat.</strong>06/15/13</th>
+        <th><strong>Sun.</strong>06/16/13</th>
+        <th><strong>Mon.</strong>06/17/13</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+            <a href="/appointments/WzEwNjcsNTQzLDQyLDM1LDEzNzExNDI4MDAuMCwxMzcxMTQ0NjAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">10:00AM</a>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjgsNTQzLDQyLDM1LDEzNzEyMjU2MDAuMCwxMzcxMjI3NDAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">09:00AM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjQsNTQzLDQyLDM1LDEzNzE0ODMwMDAuMCwxMzcxNDg0ODAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">08:30AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/WzEwNjcsNTQzLDQyLDM1LDEzNzExNDY0MDAuMCwxMzcxMTQ4MjAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">11:00AM</a>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjgsNTQzLDQyLDM1LDEzNzEyMjkyMDAuMCwxMzcxMjMxMDAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">10:00AM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjQsNTQzLDQyLDM1LDEzNzE0ODY2MDAuMCwxMzcxNDg4NDAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">09:30AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/WzEwNjcsNTQzLDQyLDM1LDEzNzExNTAwMDAuMCwxMzcxMTUxODAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">12:00PM</a>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjgsNTQzLDQyLDM1LDEzNzEyNDM2MDAuMCwxMzcxMjQ1NDAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">02:00PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjQsNTQzLDQyLDM1LDEzNzE0OTc0MDAuMCwxMzcxNDk5MjAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">12:30PM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/WzEwNjcsNTQzLDQyLDM1LDEzNzExNTcyMDAuMCwxMzcxMTU5MDAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">02:00PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjQsNTQzLDQyLDM1LDEzNzE1MDEwMDAuMCwxMzcxNTAyODAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">01:30PM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/WzEwNjcsNTQzLDQyLDM1LDEzNzExNjA4MDAuMCwxMzcxMTYyNjAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">03:00PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjQsNTQzLDQyLDM1LDEzNzE1MDQ2MDAuMCwxMzcxNTA2NDAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">02:30PM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/WzEwNjcsNTQzLDQyLDM1LDEzNzExNjQ0MDAuMCwxMzcxMTY2MjAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">04:00PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzEwNjQsNTQzLDQyLDM1LDEzNzE1MTE4MDAuMCwxMzcxNTEzNjAwLjBd/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">04:30PM</a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+  </div>
+</li>
+
+        <li>
+  <div class="vcard">
+      <h4><a href="/dr-baltazar-guzman">Dr. Baltazar Guzman</a></h4>
+      <a href="/dr-baltazar-guzman" alt="Dr. Baltazar Guzman photo" class="photo"><img alt="Small" height="120" src="https://s3.amazonaws.com/assets.healthleap.com/people/photos/581/small.jpg?1271100514" width="90" /></a>
+      <div class="adr"><p class="street-address">2001 Union Street Suite 664</p><p><span class="locality">San Francisco</span>, <abbr class="region" title="CA">CA</abbr></p><p class="postal-code">94123</p></div>
+      <div class="meta">
+        <a href="/practitioners/dr-baltazar-guzman/map" class="trigger-popup-map">Map</a>
+      </div>
+  </div>
+
+  <div class="bio">
+      <h5>About Dr. Guzman</h5>
+    
+    <p class="bio-text">Dr. Guzman has been providing excellent general and cosmetic dentistry in San Francisco since 1997.  He is often described by his patients as nice and calm; someone who resonates trust.
+
+Dr. Guzman remains up to date with the latest and most advanced tec... <a href="/dr-baltazar-guzman">(more)</a></p>
+  </div>
+
+  <div class="appts">
+    
+<form style="display:none">
+  <input id="start_date" name="start_date" type="hidden" value="2013-06-13" />
+  <input id="end_date" name="end_date" type="hidden" value="2013-06-17" />
+  <input id="next_date" name="next_date" type="hidden" value="2013-06-18" />
+  <input id="previous_date" name="previous_date" type="hidden" value="2013-06-08" />
+</form>
+
+<table class="appointments" style="float:left;">
+  <thead>
+  <tr>
+        <th><strong>Thu.</strong>06/13/13</th>
+        <th><strong>Fri.</strong>06/14/13</th>
+        <th><strong>Sat.</strong>06/15/13</th>
+        <th><strong>Sun.</strong>06/16/13</th>
+        <th><strong>Mon.</strong>06/17/13</th>
+  </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>
+            <a href="/appointments/Wzk0MCw1NDUsNDIsMzcsMTM3MTE0NTgwMC4wLDEzNzExNDkxMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">10:50AM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzkwOSw1NDUsNDIsMzcsMTM3MTQ5MTQwMC4wLDEzNzE0OTQ3MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">10:50AM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/Wzk0MCw1NDUsNDIsMzcsMTM3MTE1MjQwMC4wLDEzNzExNTU3MDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">12:40PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <a href="/appointments/WzkwOSw1NDUsNDIsMzcsMTM3MTQ5ODAwMC4wLDEzNzE1MDEzMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">12:40PM</a>
+          </td>
+      </tr>
+      <tr>
+          <td>
+            <a href="/appointments/Wzk0MCw1NDUsNDIsMzcsMTM3MTE1OTAwMC4wLDEzNzExNjIzMDAuMF0=/bookings/new?referrer=http%3A%2F%2Fwww.healthleap.com%2F" rel="nofollow">02:30PM</a>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
+  </div>
+</li>
+
+  </ul>
 </div>
+<div class="pagination"><span class="disabled prev_page">&laquo; Previous</span> <span class="current">1</span> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=2" rel="next">2</a> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=3">3</a> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=4">4</a> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=5">5</a> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=6">6</a> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=7">7</a> <a href="/searches/c4d8387815f4f717fa88e32f033634d8137114093292575?page=2" class="next_page" rel="next">Next &raquo;</a></div>
+
+
 
 </div>
     </div>
@@ -446,13 +870,13 @@ $(document).ready(function() {
 <div id="footer" role="contentinfo">
   <dl>
     <dt>More Information</dt>
-    <dd><a href="/about/contact">About MedikZiet</a></dd>
+    <dd><a href="/about/contact">About HealthLeap</a></dd>
     <dd><a href="/about/media">Media</a></dd>
   </dl>
   <dl>
     <dt>For Patients</dt>
     <dd><a href="/users/new">Sign-up</a></dd>
-    <dd><a href="/login">My MedikZiet</a></dd>
+    <dd><a href="/login">My HealthLeap</a></dd>
     <dd><a href="http://www.vitals.com/" target="_blank">Doctor Reviews</a> on Vitals.com</dd>
   </dl>
   <dl>
@@ -478,7 +902,7 @@ $(document).ready(function() {
 </div>
 
     </div>
-    <form action="https://www.MedikZiet.com/session" id="connect_to_facebook_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="yxUXJslWsAg7KBlIPRT1r/UHwZOKf2w70FXmt6UPMIE=" /></div>
+    <form action="https://www.healthleap.com/session" id="connect_to_facebook_form" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="QxSuWs2Ey0pYHTkLxGrOgtULkPct6XiIvZ5lxMOjY3E=" /></div>
 </form>
 <div id="fb-root"></div>
 
@@ -496,7 +920,7 @@ $(document).ready(function() {
     
             <!-- Analytical Body Init: Chartbeat -->
             <script type="text/javascript">
-              var _sf_async_config={uid:3479, domain:"MedikZiet.com"};
+              var _sf_async_config={uid:3479, domain:"healthleap.com"};
               (function(){
                 function loadChartbeat() {
                   window._sf_endpt=(new Date()).getTime();
