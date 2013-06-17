@@ -4,37 +4,41 @@ import play.*;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import org.joda.time.DateTime;
+
+import java.sql.Time;
 import java.util.*;
 
 @Entity
 public class Appointment extends Model {
 	public int appointmentID;
-	public int patientID;
-	public int doctorID;
-	public Date appointmentTime;
+	public Date appointmentDate; 
+	public Time appointmentTime;
 	public int statusID;
-	public int appointmentType;
-	public Date dateAdded;
-	public Date dateEdited;
-	public Date	dateDeleted;
+	public String appointmentReason;
+	public DateTime dateAdded;
+	public DateTime dateEdited;
+	public DateTime	dateDeleted;
 	public boolean status;
 	
-	public Appointment ( int appointmentID, int patientID, int doctorID, Date appointmentTime, int statusID, int appointmentType, Date dateAdded, Date dateEdited, Date dateDeleted, boolean status) {
+	@ManyToOne
+	public User patientID;
+	public Doctor docID;
+	
+	public Appointment ( int appointmentID, User patientID, Doctor docID, Date appointmentDate, Time appointmentTime, int statusID,String appointmentReason, boolean status) {
 		this.appointmentID = appointmentID;
 		this.patientID = patientID;
-		this.doctorID = doctorID;
+		this.docID = docID;
+		this.appointmentDate = appointmentDate;
 		this.appointmentTime = appointmentTime;
-		this.statusID =statusID;
-		this.appointmentType =appointmentType;
-		this.dateAdded = dateAdded;
-		this.dateEdited = dateEdited;
-		this.dateDeleted = dateDeleted;
-		this.status =status;
+		this.statusID = statusID;
+		this.appointmentReason = appointmentReason;
+		this.dateAdded = new DateTime();
+		this.dateEdited = new  DateTime();
+		this.dateDeleted = new DateTime();
+		this.status = status;
 		}
-     
-		
-		
-		
 
 }
     

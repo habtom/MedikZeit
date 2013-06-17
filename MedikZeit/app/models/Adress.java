@@ -9,25 +9,25 @@ import java.util.*;
 @Entity
 public class Adress extends Model {
 	public int ID;
-	public String City;
-	public int Zipcode;
-	public String StreetName;
-	public int StreetNumber;
+	public String city;
+	public int zipCode;
+	public String streetName;
+	public int streetNumber;
 	public Date dateAdded;
     public Date dateEdited;
     public Date dateDeleted;
-    public boolean Status;
+    public boolean status;
     
-    public Adress ( int ID, String City, int Zipcode, String StreetName, int StreetNumber, Date dateAdded, Date dateEdited, Date dateDeleted,boolean Status) {
+    public Adress ( int ID, String city, int zipCode, String streetName, int streetNumber, Date dateAdded, Date dateEdited, Date dateDeleted, boolean Status) {
     	this.ID = ID;
-    	this.City = City;
-    	this.Zipcode = Zipcode;
-    	this.StreetName =StreetName;
-    	this.StreetNumber =StreetNumber;
+    	this.city = city;
+    	this.zipCode = zipCode;
+    	this.streetName = streetName;
+    	this.streetNumber = streetNumber;
     	this.dateAdded = dateAdded;
     	this.dateEdited = dateEdited;
     	this.dateDeleted = dateDeleted;
-    	this.Status = Status;
+    	this.status = status;
         }
     
     public int returnNum()

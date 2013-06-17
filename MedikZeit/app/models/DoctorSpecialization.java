@@ -4,23 +4,29 @@ import play.*;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import org.joda.time.DateTime;
+
 import java.util.*;
 
 @Entity
 public class DoctorSpecialization  extends Model {
     public int specializationID;
     public String specializationName;
-    public Date dateAdded;
-    public Date dateEdited;
-    public Date dateDeleted;
+    public DateTime dateAdded;
+    public DateTime dateEdited;
+    public DateTime dateDeleted;
     public boolean Status;
     
-    public DoctorSpecialization ( int specializationID, String specializationName, Date dateAdded, Date dateEdited, Date dateDeleted, boolean Status) {
+    @OneToOne
+    public Doctor docID;
+    
+    public DoctorSpecialization ( int specializationID, String specializationName, boolean Status) {
     	this.specializationID = specializationID;
     	this.specializationName = specializationName;
-    	this.dateAdded = dateAdded;
-        this.dateEdited = dateEdited;
-        this.dateDeleted = dateDeleted;
+    	this.dateAdded = new DateTime();
+		this.dateEdited = new  DateTime();
+		this.dateDeleted = new DateTime();
         this.Status = Status;
     }
     	

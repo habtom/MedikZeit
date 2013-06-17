@@ -4,32 +4,35 @@ import play.*;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import org.joda.time.DateTime;
+
 import java.util.*;
 
 @Entity
 public class Doctor extends Model {
-	public int userID;
 	public int docID;
 	public String docPrefix;
-	public int docspecialisationID;
 	public String docClinicName;
 	public String docPhoto;
-	public Date dateAdded;
-    public Date dateEdited;
-    public Date dateDeleted;
-    public boolean Status;
+	public DateTime dateAdded;
+    public DateTime dateEdited;
+    public DateTime dateDeleted;
+    public boolean status;
     
-    public Doctor ( int userID, int docID, String docPrefix, int docspecialisationID, String docClinicName, String docPhoto, Date dateAdded, Date dateEdited, Date dateDeleted, boolean Status){
+    @ManyToOne
+    public User userID;
+    
+    public Doctor ( User userID, int docID, String docPrefix, String docClinicName, String docPhoto, boolean status){
       this.userID = userID;
       this.docID = docID;
       this.docPrefix = docPrefix;
-      this. docspecialisationID =  docspecialisationID;
       this.docClinicName = docClinicName;
       this.docPhoto = docPhoto;
-      this.dateAdded = dateAdded;
-      this.dateEdited = dateEdited;
-      this.dateDeleted = dateDeleted;
-      this.Status = Status;
+      this.dateAdded = new DateTime();
+	  this.dateEdited = new  DateTime();
+	  this.dateDeleted = new DateTime();
+      this.status = status;
   }
 }
  

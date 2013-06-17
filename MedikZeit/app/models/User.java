@@ -1,54 +1,75 @@
 package models;
 
-import play.*;
-import play.db.jpa.*;
-
-import javax.persistence.*;
 import java.util.*;
 
+import javax.persistence.*;
+
+import org.joda.time.DateTime;
+ 
+import play.Play;
+import play.db.jpa.*;
+import play.data.validation.*;
+import play.libs.Codec;
+ 
 @Entity
 public class User extends Model {
-	public String email;
+ 
+    @Email
+    @Required
+    public String email;
+    @Required
     public String password;
-    public String Firstname;
-    public String Lastname;
-    public int ID;
+    public String firstname;
+    public String lastname;
     public boolean gender;
-    public String PhoneNumber;
-    public boolean Insurance;
-    public int Usertype;
-    public int adressID;
-    public Date dateAdded;
-    public Date dateEdited;
-    public Date dateDeleted;
-    public boolean Status;
+    public String phoneNumber;
+    public boolean insurance;
+    public int userType;
+    public DateTime dateAdded;
+    public DateTime dateEdited;
+    public DateTime dateDeleted;
+    public boolean status;
     
-    public User(String email, String password, String Firstname, String Lastname, int ID, boolean gender, String PhoneNumber, boolean Insurance, int Usertype, int adressID, Date dateAdded, Date dateEdited, Date dateDeleted, boolean Status) {
+    
+    public User(String email, String password, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, int userType, boolean status) {
         this.email = email;
         this.password = password;
-        this.Firstname = Firstname;
-        this.Lastname = Lastname;
-        this.ID = ID;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.gender = gender;
-        this.PhoneNumber = PhoneNumber;
-        this.Insurance = Insurance;
-        this.Usertype = Usertype;
-        this.adressID = adressID;
-        this.dateAdded = dateAdded;
-        this.dateEdited = dateEdited;
-        this.dateDeleted = dateDeleted;
-        this.Status = Status;
+        this.phoneNumber = phoneNumber;
+        this.insurance = insurance;
+        this.userType = userType;
+        this.dateAdded = new DateTime();
+		this.dateEdited = new  DateTime();
+		this.dateDeleted = new DateTime();
+        this.status = status;
     }
+    
+    public static User connect(String email, String password) {
+        return find("byEmailAndPassword", email, password).first();
+    }
+    
+    public boolean checkPassword(String password) {
+        //return password.equals(Codec.hexMD5(password));
+        return this.password.equals(password);
+    }
+
+    public boolean isAdmin() {
+        return userType == 1 ? true : false;
+    }
+    
+    
+    public static User findByEmail(String email) {
+        return find("email", email).first();
+    }
+
+    public static List<User> findAll(int page, int pageSize) {
+        return User.all().fetch(page, pageSize);
+    }
+
+    public static boolean isEmailAvailable(String email) {
+        return findByEmail(email) == null;
+    }   
+ 
 }
-
-        	
-        
-        
-        
-       
-    
-   
-    
-    
-    
-

@@ -1,0 +1,195 @@
+User(01):
+    email: elsa@gmail.com
+    password:   secret
+    firstname: Elsa
+    lastname: Bakiu
+    gender: false
+    phoneNumber: 0176456348734
+    insurance: true
+    userType: 2
+    dateAdded: 10-07-2013
+    dateEdited: 10-08-2013
+    dateDeleted:    
+    status: true    
+User(02):
+    email: habtom@gmail.com
+    password: secret
+    firstname: Habtom
+    lastname:  Kahsay
+    gender: false
+    phoneNumber:  0176456348734
+    insurance:  true
+    userType: 2
+    dateAdded: 10-07-2013
+    dateEdited: 10-08-2013
+    dateDeleted:
+    status: true 
+    
+User(03):
+    email: detian@gmail.com
+    password: secret
+    firstname: Detian
+    lastname: Yin
+    gender: true
+    phoneNumber: 0176456348734
+    insurance: false
+    userType: 2
+    dateAdded: 10-07-2013
+    dateEdited: 10-08-2013
+    dateDeleted:
+    status: true
+User(04):
+    email: niharnet@gmail.com
+    password:  secret
+    firstname:  Niharnet
+    lastname:  Habtom
+    gender: true
+    phoneNumber: 0176456348734
+    insurance: false
+    userType: 2
+    dateAdded: 10-07-2013
+    dateEdited: 10-08-2013
+    dateDeleted:
+    status:  true
+User(05):
+    email: collinm@gmail.com
+    password: secret
+    firstname: Collin 
+    lastname:  Morrison
+    gender:  true
+    phoneNumber: 0176456348734
+    insurance:  false
+    userType:  2
+    dateAdded:  10-07-2013
+    dateEdited: 10-08-2013
+    dateDeleted:
+    status:  true
+
+Doctor(01):
+    docPrefix: Dr.
+    docClinicName: OpenClinic
+    docPhoto: /images/D001.jpg
+    dateAdded: 
+    dateEdited:
+    dateDeleted:
+    status: true
+
+Doctor(02):
+    docPrefix:  Dr.
+    docClinicName: OpenClinic
+    docPhoto: /images/D002.jpg
+    dateAdded: 
+    dateEdited:
+    dateDeleted:
+    status:  true
+
+Doctor(03):
+    docPrefix: Dr.
+    docClinicName: OpenClinic
+    docPhoto: /images/D003.jpg
+    dateAdded: 
+    dateEdited:
+    dateDeleted:
+    status:  true
+Doctor(04):
+    docPrefix: Dr.
+    docClinicName: OpenClinic
+    docPhoto: /images/D004.jpg
+    dateAdded: 
+    dateEdited:
+    dateDeleted:
+    status:  true
+Doctor(05):
+    docPrefix: Dr.
+    docClinicName: OpenClinic
+    docPhoto: /images/D005.jpg   
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status:  true
+
+DoctorSpecialization(01):
+    specializationName: Dentist
+    dateAdded:
+    dateEdited: 
+    dateDeleted:
+    status: true
+
+DoctorSpecialization(02):
+    specializationName: Primary Care Doctor    
+    dateAdded:
+    dateEdited: 
+    dateDeleted:
+    status: true
+DoctorSpecialization(03):
+    specializationName: Dermatologist
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: true
+DoctorSpecialization(04):
+    specializationName: Ear, Nose & Throat Doctor(ENT)
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: true
+DoctorSpecialization(05):
+    specializationName: Eye Doctor
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: true
+DoctorSpecialization(06):
+    specializationName: Psychiatrist
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: true
+DoctorSpecialization(07):
+    specializationName: Orthopedist
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: true
+Appointment(01):
+    appointmentTime: 2013-07-14 10:00
+    appointmentType: Medical
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: active 
+Appointment(02):
+    appointmentTime: 2013-07-14 11:00
+    appointmentType: Medical
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: active
+Appointment(03):
+    appointmentTime: 2013-07-15 11:00
+    appointmentType: Medical
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: active
+Appointment(04):
+    appointmentTime: 2013-07-01 9:00
+    appointmentType: Medical
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: active
+Appointment(05):
+    appointmentTime: 2013-07-14 11:30
+    appointmentType: Medical
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: active
+Appointment(06):
+    appointmentTime: 2013-07-14 11:30
+    appointmentType: Medical
+    dateAdded:
+    dateEdited:
+    dateDeleted:
+    status: active
