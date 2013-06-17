@@ -30,8 +30,10 @@ public class User extends Model {
     public DateTime dateDeleted;
     public boolean status;
     
+    @OneToOne
+    public Adress addressID;
     
-    public User(String email, String password, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, int userType, boolean status) {
+    public User(Adress addressID, String email, String password, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, int userType, boolean status) {
         this.email = email;
         this.password = password;
         this.firstname = firstname;
@@ -71,5 +73,4 @@ public class User extends Model {
     public static boolean isEmailAvailable(String email) {
         return findByEmail(email) == null;
     }   
- 
 }

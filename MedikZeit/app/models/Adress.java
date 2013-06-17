@@ -4,29 +4,34 @@ import play.*;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import org.joda.time.DateTime;
+
 import java.util.*;
 
 @Entity
 public class Adress extends Model {
-	public int ID;
+	public int addressID;
 	public String city;
 	public int zipCode;
 	public String streetName;
 	public int streetNumber;
-	public Date dateAdded;
-    public Date dateEdited;
-    public Date dateDeleted;
+	public DateTime dateAdded;
+    public DateTime dateEdited;
+    public DateTime dateDeleted;
     public boolean status;
     
-    public Adress ( int ID, String city, int zipCode, String streetName, int streetNumber, Date dateAdded, Date dateEdited, Date dateDeleted, boolean Status) {
-    	this.ID = ID;
+    
+    
+    public Adress ( int addressID, String city, int zipCode, String streetName, int streetNumber, boolean Status) {
+    	this.addressID = addressID;
     	this.city = city;
     	this.zipCode = zipCode;
     	this.streetName = streetName;
     	this.streetNumber = streetNumber;
-    	this.dateAdded = dateAdded;
-    	this.dateEdited = dateEdited;
-    	this.dateDeleted = dateDeleted;
+    	this.dateAdded = new DateTime();
+		this.dateEdited = new  DateTime();
+		this.dateDeleted = new DateTime();
     	this.status = status;
         }
     

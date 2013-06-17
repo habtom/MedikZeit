@@ -17,22 +17,23 @@ public class Appointment extends Model {
 	public Time appointmentTime;
 	public int statusID;
 	public String appointmentReason;
+	public String statusName;
 	public DateTime dateAdded;
 	public DateTime dateEdited;
 	public DateTime	dateDeleted;
 	public boolean status;
 	
 	@ManyToOne
-	public User patientID;
+	public User userID;
 	public Doctor docID;
 	
-	public Appointment ( int appointmentID, User patientID, Doctor docID, Date appointmentDate, Time appointmentTime, int statusID,String appointmentReason, boolean status) {
+	public Appointment ( int appointmentID, User userID, Doctor docID, Date appointmentDate, Time appointmentTime, String appointmentReason, String statusName, boolean status) {
 		this.appointmentID = appointmentID;
-		this.patientID = patientID;
+		this.userID = userID;
 		this.docID = docID;
 		this.appointmentDate = appointmentDate;
 		this.appointmentTime = appointmentTime;
-		this.statusID = statusID;
+		this.statusName = statusName;
 		this.appointmentReason = appointmentReason;
 		this.dateAdded = new DateTime();
 		this.dateEdited = new  DateTime();

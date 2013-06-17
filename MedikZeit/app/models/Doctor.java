@@ -15,20 +15,27 @@ public class Doctor extends Model {
 	public String docPrefix;
 	public String docClinicName;
 	public String docPhoto;
+	public String city;
+	public int zipCode;
+	public String streetName;
+	public int streetNumber;
 	public DateTime dateAdded;
     public DateTime dateEdited;
     public DateTime dateDeleted;
     public boolean status;
     
-    @ManyToOne
+    @OneToOne
     public User userID;
     
-    public Doctor ( User userID, int docID, String docPrefix, String docClinicName, String docPhoto, boolean status){
+    public Doctor ( User userID, int docID, String docPrefix, String docClinicName, String docPhoto,String city, int zipCode, String streetName, int streetNumber, boolean status){
       this.userID = userID;
       this.docID = docID;
       this.docPrefix = docPrefix;
       this.docClinicName = docClinicName;
       this.docPhoto = docPhoto;
+      this.city = city;
+      this.streetName = streetName;
+      this.streetNumber = streetNumber;
       this.dateAdded = new DateTime();
 	  this.dateEdited = new  DateTime();
 	  this.dateDeleted = new DateTime();

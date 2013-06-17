@@ -6,13 +6,81 @@ User(01):
     gender: false
     phoneNumber: 0176456348734
     insurance: true
+    userType: 3
+    dateAdded: 
+    dateEdited: 
+    dateDeleted:    
+    status: true 
+   
+User(02):
+    email: habtom@gmail.com
+    password: secret
+    firstname: Habtom
+    lastname:  Kahsay
+    gender: false
+    phoneNumber:  0176456348734
+    insurance:  true
+    userType: 3
+    dateAdded: 
+    dateEdited: 
+    dateDeleted:
+    status: true 
+    
+User(03):
+    email: detian@gmail.com
+    password: secret
+    firstname: Detian
+    lastname: Yin
+    gender: true
+    phoneNumber: 0176456348734
+    insurance: false
+    userType: 3
+    dateAdded: 
+    dateEdited: 
+    dateDeleted:
+    status: true
+User(04):
+    email: niharnet@gmail.com
+    password:  secret
+    firstname:  Niharnet
+    lastname:  Habtom
+    gender: true
+    phoneNumber: 0176456348734
+    insurance: false
+    userType: 3
+    dateAdded: 
+    dateEdited: 
+    dateDeleted:
+    status:  true
+User(05):
+    email: collinm@gmail.com
+    password: secret
+    firstname: Collin 
+    lastname:  Morrison
+    gender:  true
+    phoneNumber: 0176456348734
+    insurance:  false
+    userType:  3
+    dateAdded:  
+    dateEdited: 
+    dateDeleted:
+    status:  true
+
+User(06):
+    email: elsa1@gmail.com
+    password:   secret
+    firstname: Elsa
+    lastname: Bakiu
+    gender: false
+    phoneNumber: 0176456348734
+    insurance: true
     userType: 2
     dateAdded: 10-07-2013
     dateEdited: 10-08-2013
     dateDeleted:    
     status: true    
-User(02):
-    email: habtom@gmail.com
+User(07):
+    email: habtom1@gmail.com
     password: secret
     firstname: Habtom
     lastname:  Kahsay
@@ -25,8 +93,8 @@ User(02):
     dateDeleted:
     status: true 
     
-User(03):
-    email: detian@gmail.com
+User(08):
+    email: detian1@gmail.com
     password: secret
     firstname: Detian
     lastname: Yin
@@ -38,8 +106,8 @@ User(03):
     dateEdited: 10-08-2013
     dateDeleted:
     status: true
-User(04):
-    email: niharnet@gmail.com
+User(09):
+    email: niharnet1@gmail.com
     password:  secret
     firstname:  Niharnet
     lastname:  Habtom
@@ -51,8 +119,8 @@ User(04):
     dateEdited: 10-08-2013
     dateDeleted:
     status:  true
-User(05):
-    email: collinm@gmail.com
+User(10):
+    email: collinm1@gmail.com
     password: secret
     firstname: Collin 
     lastname:  Morrison
@@ -73,7 +141,7 @@ Doctor(01):
     dateEdited:
     dateDeleted:
     status: true
-
+    
 Doctor(02):
     docPrefix:  Dr.
     docClinicName: OpenClinic
@@ -102,7 +170,7 @@ Doctor(04):
 Doctor(05):
     docPrefix: Dr.
     docClinicName: OpenClinic
-    docPhoto: /images/D005.jpg   
+    docPhoto: /images/D005.jpg
     dateAdded:
     dateEdited:
     dateDeleted:
@@ -152,44 +220,56 @@ DoctorSpecialization(07):
     dateDeleted:
     status: true
 Appointment(01):
-    appointmentTime: 2013-07-14 10:00
-    appointmentType: Medical
+    appointmentDate: 2013-07-14
+    appointmentTime: 10:00
+    appointmentReason: Medical
+    statusName: active
     dateAdded:
     dateEdited:
     dateDeleted:
-    status: active 
+    status:  
 Appointment(02):
-    appointmentTime: 2013-07-14 11:00
-    appointmentType: Medical
+    appointmentDate: 2013-07-14
+    appointmentTime: 12:00
+    appointmentReason: Medical
+    statusName: active
     dateAdded:
     dateEdited:
     dateDeleted:
-    status: active
+    status: 
 Appointment(03):
-    appointmentTime: 2013-07-15 11:00
-    appointmentType: Medical
+    appointmentDate: 2013-07-14
+    appointmentTime: 13:00
+    appointmentReason: Medical
+    statusName: active
     dateAdded:
     dateEdited:
     dateDeleted:
-    status: active
+    status: 
 Appointment(04):
-    appointmentTime: 2013-07-01 9:00
-    appointmentType: Medical
+    appointmentDate: 2013-07-14
+    appointmentTime: 14:00
+    appointmentReason: Medical
+    statusName: active
     dateAdded:
     dateEdited:
     dateDeleted:
-    status: active
+    status:
 Appointment(05):
-    appointmentTime: 2013-07-14 11:30
-    appointmentType: Medical
+    appointmentDate: 2013-07-14
+    appointmentTime: 16:00
+    appointmentReason: Medical
+    statusName: active
     dateAdded:
     dateEdited:
     dateDeleted:
-    status: active
+    status:
 Appointment(06):
-    appointmentTime: 2013-07-14 11:30
-    appointmentType: Medical
+    appointmentDate: 2013-07-14
+    appointmentTime: 17:00
+    appointmentReason: Medical
+    statusName: active
     dateAdded:
     dateEdited:
     dateDeleted:
-    status: active
+    status:
