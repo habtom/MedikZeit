@@ -26,9 +26,11 @@ public class Doctor extends Model {
     
     @OneToOne
     public User userID;
+    public DoctorSpecialization docSpecializationID;
     
-    public Doctor ( User userID, int docID, String docPrefix, String docClinicName, String docPhoto,String city, int zipCode, String streetName, int streetNumber, boolean status){
+    public Doctor ( User userID, DoctorSpecialization docSpecializationID, int docID, String docPrefix, String docClinicName, String docPhoto,String city, int zipCode, String streetName, int streetNumber, boolean status){
       this.userID = userID;
+      this.docSpecializationID = docSpecializationID;
       this.docID = docID;
       this.docPrefix = docPrefix;
       this.docClinicName = docClinicName;

@@ -11,18 +11,16 @@ import java.util.*;
 
 @Entity
 public class DoctorSpecialization  extends Model {
-    public int specializationID;
+    public int docSpecializationID;
     public String specializationName;
     public DateTime dateAdded;
     public DateTime dateEdited;
     public DateTime dateDeleted;
     public boolean Status;
     
-    @OneToOne
-    public Doctor docID;
     
-    public DoctorSpecialization ( int specializationID, String specializationName, boolean Status) {
-    	this.specializationID = specializationID;
+    public DoctorSpecialization (int docSpecializationID, String specializationName, boolean Status) {
+    	this.docSpecializationID = docSpecializationID;
     	this.specializationName = specializationName;
     	this.dateAdded = new DateTime();
 		this.dateEdited = new  DateTime();

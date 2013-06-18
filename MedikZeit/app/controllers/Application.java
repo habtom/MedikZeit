@@ -9,12 +9,15 @@ import models.*;
 
 public class Application extends Controller {
 	
-	public static void findDoctor() {
+	/*public static void findDoctor() {
 		render();
-	}
+	}*/
 
     public static void index() {
-        render();
+    	List<Doctor> doctors = Doctor.findAll();
+        render(doctors);
     }
+    
+    
 
 }
