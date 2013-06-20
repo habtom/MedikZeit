@@ -1,15 +1,112 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'Welcome to MedikZeit - ' /}
 
 
+<div id="user">
+  			<ul>
+  					<li><a href="users/new.html" class="dropdown">Sign-up</a>
+    				
+					</li>
 
-<table border="1">
-	<tbody>
-	    #{list items:doctors, as:'doctor'}
-           <tr>
-            	<td>${doctor.docPrefix}, ${doctor.userID.firstname} ${doctor.userID.lastname} ${doctor.userID.addressID.city}  <br /> <img src="${doctor.docPhoto}" alt="Doctor Photo" ></img>, <br /> ${doctor.docClinicName}, ${doctor.city}, ${doctor.streetName}, ${doctor.streetNumber}</td>
-           </tr>
-        #{/list}
-    </tbody>
-</table>
+  					<li><a href="login.html" class="dropdown">Login</a>
+    				
+					</li>
+			</ul>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+
+<div id="main">
+      <div id="content" role="main">
+      	<!-- Start of Steps in Boxes and Filter -->
+  		<div id="steps">
+  			<ol>
+  				<!-- Start Box 01 -->
+      			<li> <h2>Find a doctor</h2>
+          		<img alt="Step_find_doctor" src="./public/images/find_doctor.png" width="195" height="145" />
+          		<p>Easily search through local doctors by speciality and insurance.</p>
+      			</li>
+      			
+      			<!-- Start Box 02 -->
+      			<li>
+          		<h2>Book an appointment</h2>
+          		<img alt="Step_make_an_appt" src="./public/images/make_an_appt.png" width="143" height="143" />
+          		<p>View a doctor’s schedule and book your next appointment - instantly.</p>
+      			</li>
+      			
+      			<!-- Start Box 03 -->
+      			<li>
+          		<h2>Manage your appointments</h2>
+          		<img alt="Step_manage_your_health" src="./public/images/manage_your_appt.jpg" width="158" height="144" />
+          		<p>Conveniently manage your appointments and set reminders.</p>
+      			</li>
+      
+				<!-- Start Filter Box -->
+      			<li id="steps-start">
+    					<h2>Get started</h2>
+						<form action="searches" class="vertical formtastic search" id="search-form" method="post" name="fileterForm">
+						
+						<div style="margin:0;padding:0;display:inline">
+						<input name="authenticity_token" type="hidden" value="NnQWMVTfmJ4m5QBOA2SbBe2nZeScqB5EwWp3n4P7k2c=" />
+						</div>
+						
+						<fieldset class="inputs">
+						<ol>            
+						<li>
+								<select id="search_specialty_ids" name="search[specialty_ids]">	
+								<option value="0" selected="selected">Choose Speciallity</option>				
+								<option value="1">Dentist</option>
+								<option value="2">Dermatologist</option>
+								<option value="3">Psychiatrist</option>
+								<option value="4">Endocrinology</option>
+								<option value="5">Primary Care Doctor</option>
+								<option value="7">Orthodontics</option>
+								<option value="8">All</option>
+								</select>
+            			<li>
+            					<select id="search_insurance_carrier_id" name="search[insurance_carrier_id]">
+            					<option value="0">Choose Insurance </option>
+            					<option value="1">Public Insurance </option>
+            					<option value="2">Private Insurance </option>
+            					</select>
+						</li>
+						
+						<li>
+								<select id="search_specialty_ids" name="search[specialty_ids]">
+								<option value="0" selected="selected">Choose a City</option>					
+								<option value="1">Munich</option>
+								<option value="2">Hamburg</option>
+								<option value="3">Dresden</option>
+								<option value="4">Düsseldorf</option>
+								<option value="5">Berlin</option>
+								<option value="6">Bremen</option>
+								<option value="7">Stuttgart</option>
+								<option value="8">Hanover</option>
+								<option value="9">Frankfurt</option>
+								<option value="10">Other</option>
+								</select>
+            		
+            			</fieldset>
+            		
+            		<fieldset class="buttons">
+						<ol><input id="search_submit" name="commit" type="submit" value="Find appointment" /></ol>
+					</fieldset>
+					</form>
+				</li>
+			</ol>
+		</div>
+		<!-- End of Steps in Boxes and Filter -->
+		
+		
+
+</div>
+</div>
+
 
