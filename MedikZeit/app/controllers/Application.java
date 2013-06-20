@@ -16,11 +16,12 @@ public class Application extends Controller {
 	    public static void doAddUser(User user) {
 	    	
 	    	user.save();
-	    	show(user.id);
+	    	userProfile(user.id);
 	    }
 		
-	    public static void show(Long id) {
-	    	
+	    public static void userProfile(Long id) {
+	    	User user = User.findById(id);
+	    	render(user);
 	    }
 	    
 		public static void index() {
