@@ -4,6 +4,9 @@
 
 # Home page
 GET     /                                       Application.index
+GET     /signup                                 Application.userSignup
+POST    /adduser                                Application.doAddUser
+GET     /profile                                Application.userProfile
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
