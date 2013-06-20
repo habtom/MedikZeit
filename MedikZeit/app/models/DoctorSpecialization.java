@@ -11,7 +11,6 @@ import java.util.*;
 
 @Entity
 public class DoctorSpecialization  extends Model {
-    public int docSpecializationID;
     public String specializationName;
     public DateTime dateAdded;
     public DateTime dateEdited;
@@ -19,8 +18,7 @@ public class DoctorSpecialization  extends Model {
     public boolean Status;
     
     
-    public DoctorSpecialization (int docSpecializationID, String specializationName, boolean Status) {
-    	this.docSpecializationID = docSpecializationID;
+    public DoctorSpecialization (String specializationName, boolean Status) {
     	this.specializationName = specializationName;
     	this.dateAdded = new DateTime();
 		this.dateEdited = new  DateTime();

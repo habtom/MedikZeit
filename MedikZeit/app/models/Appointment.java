@@ -12,7 +12,6 @@ import java.util.*;
 
 @Entity
 public class Appointment extends Model {
-	public int appointmentID;
 	public Date appointmentDate; 
 	public Time appointmentTime;
 	public int statusID;
@@ -27,8 +26,7 @@ public class Appointment extends Model {
 	public User userID;
 	public Doctor docID;
 	
-	public Appointment ( int appointmentID, User userID, Doctor docID, Date appointmentDate, Time appointmentTime, String appointmentReason, String statusName, boolean status) {
-		this.appointmentID = appointmentID;
+	public Appointment (User userID, Doctor docID, Date appointmentDate, Time appointmentTime, String appointmentReason, String statusName, boolean status) {
 		this.userID = userID;
 		this.docID = docID;
 		this.appointmentDate = appointmentDate;

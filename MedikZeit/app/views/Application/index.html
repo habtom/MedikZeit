@@ -7,7 +7,7 @@
 	<tbody>
 	    #{list items:doctors, as:'doctor'}
            <tr>
-            	<td>${doctor.docPrefix}, ${doctor.userID.firstname} ${doctor.userID.lastname} <br /> <img src="${doctor.docPhoto}" alt="Doctor Photo" ></img>, <br /> ${doctor.docClinicName}, ${doctor.city}, ${doctor.streetName}, ${doctor.streetNumber}</td>
+            	<td>${doctor.docPrefix}, ${doctor.userID.firstname} ${doctor.userID.lastname} ${doctor.userID.addressID.city}  <br /> <img src="${doctor.docPhoto}" alt="Doctor Photo" ></img>, <br /> ${doctor.docClinicName}, ${doctor.city}, ${doctor.streetName}, ${doctor.streetNumber}</td>
            </tr>
         #{/list}
     </tbody>

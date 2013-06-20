@@ -3,14 +3,130 @@
 <html>
     <head>
         <title>#{get 'title' /}</title>
-        <meta charset="${_response_encoding}">
-        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
-        #{get 'moreStyles' /}
-        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
-        <script src="@{'/public/javascripts/jquery-1.6.4.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
-        #{get 'moreScripts' /}
+		<meta http-equiv="Content-Type" content="text/html; charset=${_response_encoding}"/>        
+        
+		#{stylesheet src:"screen.css" /}
+		#{stylesheet src:"marketing.css" /}
+        #{stylesheet src:"printf.css" /}
+        <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}" />
+        #{script src:"application.js" /}
+        #{script src:"default.js" /}
     </head>
-    <body>
-        #{doLayout /}
-    </body>
+    
+  	 <!-- Start main --> 
+<body class="show" id="homes">   
+   
+    <div id="masthead" role="banner">
+      <div id="header">  
+      <h1 id="logo"><a href="index.html">MedikZeit</a></h1>
+  	   <!-- Start navigation area -->
+  		<div id="menu">
+  		 
+  		 <!-- Start navigation -->
+  			<ul>
+				<li><a href="#" class="dropdown"><span>Home</span></a></li>
+				
+				<li><a href="#" class="dropdown"><span>Features</span></a>
+				<div class="submenu one-col">
+				<div class="left"> <h4>Features and Specialties</h4>
+				<div class="col-wrapper">
+				<div class="col first">
+					<ul class="links">
+            			<li><a href="features/find.html">Find Doctors</a></li>
+            			<li><a href="features/choose.html">Choose Doctors</a></li>
+            			<li><a href="features/book.html">Book Appointments</a></li>
+            			<li><a href="features/manage.html">Manage Appointments</a></li>
+          			</ul>
+        		</div>
+      			</div>
+    			</div>
+  				</div>
+				</li>
+				
+				<li><a href="#" class="dropdown"><span>Plans and Pricing</span></a></li>
+				
+				<li><a href="#" class="dropdown"><span>Medics</span></a>
+				<div class="submenu one-col">
+				<div class="left"> <h4>List Medics by Specialities </h4>
+				<div class="col-wrapper">
+				<div class="col first">
+					<ul class="links">
+						<li><a href="searches/listDentists.html">Dentists</a></li>
+            			<li><a href="searches/listDermatologists.html">Dermatologists</a></li>
+            			<li><a href="searches/listGynecologists.html">Gynecologists</a></li>
+            			<li><a href="searches/listPsychiatrist.html">Psychiatrist</a></li>
+            			<li><a href="searches/listOrthodontics.html">Orthodontics</a></li>
+            			<li><a href="searches/listAll.html">All Medics</a></li>
+          			</ul>
+        		</div>
+      			</div>
+    			</div>
+  				</div>
+				</li>
+				
+				<li><a href="#" class="dropdown"><span>About Us</span></a></li>
+			
+          	</ul>
+    <!-- End navigation -->
+	
+	</div>
+  		
+		</div>
+	</div>
+
+
+ <!-- End navigation area -->  
+ 
+ 
+<!-- Start Main Body -->
+    
+    
+    <div id="main">
+      <div id="content" role="main">
+      
+ 		#{doLayout /}     	
+      	
+		</div>
+	</div>
+    
+<!-- °°°°°°°° -->
+<div id="addendum">
+      
+<div id="footer" role="contentinfo">
+  <dl>
+    <dt>MedikZeit!</dt>
+    <dd><a href="aboutus.html">About Us</a></dd>
+    <dd><a href="careers.html">Careers</a></dd>
+    <dd><a href="contacts.html">Contacts</a></dd>
+  </dl>
+  <dl>
+    <dt>For Patients</dt>
+    <dd><a href="users/new.html">Sign-up</a></dd>
+    <dd><a href="login.html">My MedikZeit!</a></dd>
+    <dd><a href="#"">Doctor Reviews</a></dd>
+  </dl>
+  <dl>
+    <dt>For Doctors</dt>
+    <dd><a href="membership.html">Membership</a></dd>
+    <dd><a href="membership/features.html">Features</a></dd>
+    <dd><a href="membership/plans.html">Plans &amp; Pricing</a></dd>
+  </dl>
+  <dl id="footer-legal">
+    <dt>Legal</dt>
+    <dd><a href="legal/terms.html">Terms of Use</a></dd>
+    <dd><a href="legal/privacy.html">Privacy Policy</a></dd>
+    <dd id="copyright">&copy; 2013 MedikZeit!</dd>
+  </dl>
+  <dl id="footer-contact">
+    <dt>Stay Networked</dt>
+    <dd><a href="http://twitter.com/MedikZeit" id="tw-link">Follow Us</a></dd>
+    <dd><a href="http://www.facebook.com/MedikZeit" id="fb-link">Like Us</a></dd>
+    <dd><a href="https://plus.google.com/u/0/+/MedikZeit" id="fb-link">+Follow Us</a></dd>
+  </dl>
+</div>
+
+</div>
+
+</body>
+
 </html>

@@ -17,23 +17,26 @@ public class User extends Model {
     @Email
     @Required
     public String email;
+    
     @Required
     public String password;
+    
     public String firstname;
     public String lastname;
     public boolean gender;
     public String phoneNumber;
     public boolean insurance;
+    public String city;
+	public int zipCode;
+	public String streetName;
+	public int streetNumber;
     public int userType;
     public DateTime dateAdded;
     public DateTime dateEdited;
     public DateTime dateDeleted;
     public boolean status;
-    
-    @OneToOne
-    public Adress addressID;
-    
-    public User(Adress addressID, String email, String password, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, int userType, boolean status) {
+        
+    public User(String email, String password, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, String city, int zipCode, String streetName, int streetNumber, int userType, boolean status) {
         this.email = email;
         this.password = password;
         this.firstname = firstname;
@@ -41,36 +44,14 @@ public class User extends Model {
         this.gender = gender;
         this.phoneNumber = phoneNumber;
         this.insurance = insurance;
+        this.city = city;
+    	this.zipCode = zipCode;
+    	this.streetName = streetName;
+    	this.streetNumber = streetNumber;
         this.userType = userType;
         this.dateAdded = new DateTime();
 		this.dateEdited = new  DateTime();
 		this.dateDeleted = new DateTime();
         this.status = status;
     }
-    
-    public static User connect(String email, String password) {
-        return find("byEmailAndPassword", email, password).first();
-    }
-    
-    public boolean checkPassword(String password) {
-        //return password.equals(Codec.hexMD5(password));
-        return this.password.equals(password);
-    }
-
-    public boolean isAdmin() {
-        return userType == 1 ? true : false;
-    }
-    
-    
-    public static User findByEmail(String email) {
-        return find("email", email).first();
-    }
-
-    public static List<User> findAll(int page, int pageSize) {
-        return User.all().fetch(page, pageSize);
-    }
-
-    public static boolean isEmailAvailable(String email) {
-        return findByEmail(email) == null;
-    }   
 }
