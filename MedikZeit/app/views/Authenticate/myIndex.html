@@ -1,14 +1,14 @@
 #{extends 'main.html' /}
-#{set title:'Welcome to MedikZeit - ' /}
+#{set title:'Welcome to My MedikZeit - Home ' /}
 
 
 <div id="user">
   			<ul>
-  					<li><a href="@{Authenticate.doRegister() }" class="dropdown">Sign-up</a>
+  					<li><a href="@{Application.userSignup() }" class="dropdown">My Profile</a>
     				
 					</li>
 
-  					<li><a href="@{Authenticate.login() }" class="dropdown">Login</a>
+  					<li><a href="@{Authenticate.logout() }" class="dropdown">Logout</a>
     				
 					</li>
 			</ul>
@@ -30,21 +30,21 @@
   			<ol>
   				<!-- Start Box 01 -->
       			<li> <h2>Find a doctor</h2>
-          		<img alt="Step_find_doctor" src="./public/images/find_doctor.png" width="195" height="145" />
+          		<img alt="Step_find_doctor" src="../public/images/find_doctor.png" width="195" height="145" />
           		<p>Easily search through local doctors by speciality and insurance.</p>
       			</li>
       			
       			<!-- Start Box 02 -->
       			<li>
           		<h2>Book an appointment</h2>
-          		<img alt="Step_make_an_appt" src="./public/images/make_an_appt.png" width="143" height="143" />
+          		<img alt="Step_make_an_appt" src="../public/images/make_an_appt.png" width="143" height="143" />
           		<p>View a doctor’s schedule and book your next appointment - instantly.</p>
       			</li>
       			
       			<!-- Start Box 03 -->
       			<li>
           		<h2>Manage your appointments</h2>
-          		<img alt="Step_manage_your_health" src="./public/images/manage_your_appt.jpg" width="158" height="144" />
+          		<img alt="Step_manage_your_health" src="../public/images/manage_your_appt.jpg" width="158" height="144" />
           		<p>Conveniently manage your appointments and set reminders.</p>
       			</li>
       

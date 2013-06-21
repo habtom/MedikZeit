@@ -24,7 +24,7 @@
   		 
   		 <!-- Start navigation -->
   			<ul>
-				<li><a href="#" class="dropdown"><span>Home</span></a></li>
+				<li><a href="@{Application.index() }" class="dropdown"><span>Home</span></a></li>
 				
 				<li><a href="#" class="dropdown"><span>Features</span></a>
 				<div class="submenu one-col">
@@ -98,8 +98,8 @@
   </dl>
   <dl>
     <dt>For Patients</dt>
-    <dd><a href="users/new.html">Sign-up</a></dd>
-    <dd><a href="login.html">My MedikZeit!</a></dd>
+    <dd><a href="@{Authenticate.doRegister() }">Sign-up</a></dd>
+    <dd><a href="@{Authenticate.login() }">My MedikZeit!</a></dd>
     <dd><a href="#"">Doctor Reviews</a></dd>
   </dl>
   <dl>

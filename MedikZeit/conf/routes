@@ -4,9 +4,14 @@
 
 # Home page
 GET     /                                       Application.index
-GET     /signup                                 Application.userSignup
+GET     /usersignup                             Application.userSignup
 POST    /adduser                                Application.doAddUser
 GET     /profile                                Application.userProfile
+GET     /signup                                 Authenticate.register
+POST    /signup                                 Authenticate.doRegister
+GET     /login                                  Authenticate.login
+GET     /logout                                 Authenticate.logout
+GET     /mymedikzeit                            Authenticate.myIndex
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

@@ -19,9 +19,14 @@ public class User extends Model {
     public String email;
     
     @Required
+    @Password
+    @Transient
     public String password;
+    public String passwordHash;
     
+    @Required
     public String firstname;
+    @Required
     public String lastname;
     public boolean gender;
     public String phoneNumber;
@@ -36,9 +41,8 @@ public class User extends Model {
     public DateTime dateDeleted;
     public boolean status;
         
-    public User(String email, String password, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, String city, int zipCode, String streetName, int streetNumber, int userType, boolean status) {
+    public User(String email, String firstname, String lastname, boolean gender, String phoneNumber, boolean insurance, String city, int zipCode, String streetName, int streetNumber, int userType, boolean status) {
         this.email = email;
-        this.password = password;
         this.firstname = firstname;
         this.lastname = lastname;
         this.gender = gender;
@@ -53,5 +57,15 @@ public class User extends Model {
 		this.dateEdited = new  DateTime();
 		this.dateDeleted = new DateTime();
         this.status = status;
+    }
+    
+    public void setPassword(String password) {
+    	this.password = password;
+    	this.passwordHash = Codec.hexMD5(password);
+    }
+    
+    public static boolean isValidLogin(String email, String password) {
+    	
+    	return (count("email=? AND PasswordHash=?", email, Codec.hexMD5(password)) == 1);
     }
 }
