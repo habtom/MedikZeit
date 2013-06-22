@@ -1,7 +1,7 @@
 package controllers;
 
 import play.classloading.ApplicationClasses.ApplicationClass;
-import play.data.validation.Valid;
+import play.data.validation.*;
 import play.mvc.Controller;
 import models.*;
 
@@ -9,6 +9,7 @@ public class Authenticate extends Controller {
 	
 	private static void doLoginLogic(String email) {
 		session.put("user", email);
+		flash.success("Wellcome, " + email);
 	}
 	
 	public static void register() {
@@ -55,5 +56,6 @@ public class Authenticate extends Controller {
 		}
         render();
 	}
+
 }
 

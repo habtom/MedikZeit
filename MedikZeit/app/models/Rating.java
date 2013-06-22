@@ -1,6 +1,7 @@
 package models;
 
 import play.*;
+import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
@@ -11,28 +12,21 @@ import java.util.*;
 
 @Entity
 public class Rating extends Model {
-	public int ratingID;
+
+	@Required
 	public int ratingValue;
+	@Required
 	public String comment;
-    public DateTime dateAdded;
-	public DateTime dateEdited;
-	public DateTime dateDeleted;
-	public boolean status;
 	
 	@ManyToOne
-	public User patientID;
-    public Doctor docID;
-	public Rating ( int ratingID, Doctor docID, User patientID, int ratingValue, String comment, boolean status) {
-	   this.ratingID =ratingID;
-	   this.patientID = patientID;
-	   this.docID = docID;
-	   this.ratingValue =ratingValue;
-	   this.comment = comment;
-	   this.dateAdded = new DateTime();
-	   this.dateEdited = new  DateTime();
-       this.dateDeleted = new DateTime();
-	   this.status = status;
-	   
+	public User patient;
+    @ManyToOne
+	public Doctor doctor;
+    
+    public String toString()
+	{
+		return "Patient: " + patient.firstname + " " + patient.lastname + " Doctor: " + doctor.user.firstname + " " + doctor.user.lastname + " Rating value: " + ratingValue; 
 	}
+	
     
 }

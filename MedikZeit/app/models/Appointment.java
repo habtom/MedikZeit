@@ -1,6 +1,7 @@
 package models;
 
 import play.*;
+import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
@@ -12,32 +13,23 @@ import java.util.*;
 
 @Entity
 public class Appointment extends Model {
-	public Date appointmentDate; 
-	public Time appointmentTime;
-	public int statusID;
-	public String appointmentReason;
-	public String statusName;
-	public DateTime dateAdded;
-	public DateTime dateEdited;
-	public DateTime	dateDeleted;
-	public boolean status;
 	
+	@Required
+	public Date appointmentTime;
 	@ManyToOne
-	public User userID;
-	public Doctor docID;
-	
-	public Appointment (User userID, Doctor docID, Date appointmentDate, Time appointmentTime, String appointmentReason, String statusName, boolean status) {
-		this.userID = userID;
-		this.docID = docID;
-		this.appointmentDate = appointmentDate;
-		this.appointmentTime = appointmentTime;
-		this.statusName = statusName;
-		this.appointmentReason = appointmentReason;
-		this.dateAdded = new DateTime();
-		this.dateEdited = new  DateTime();
-		this.dateDeleted = new DateTime();
-		this.status = status;
-		}
+	public AppointmentStatus status;
+	@ManyToOne
+	public AppointmentType appointmentType;
+	@ManyToOne
+	public User patient;
+	@ManyToOne
+	public Doctor doctor;
 
+	
+	public String toString()
+	{
+		return "Patient: " + patient.firstname + " " + patient.lastname + " Doctor: " + doctor.user.firstname + " " + doctor.user.lastname + " Appointment time: " + appointmentTime; 
+	}
+	
 }
     

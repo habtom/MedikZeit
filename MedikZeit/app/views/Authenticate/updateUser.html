@@ -29,36 +29,35 @@
 			<div><h1>Sign up free today</h1></div>
 
 			<div id="signup-form">
-				<form action="@{Authenticate.doRegister() }" class="formtastic person" id="new_person" method="post">
+				<form action="@{Authenticate.updateUser() }" class="formtastic person" id="new_person" method="post">
 		
 				<fieldset class="inputs">
-				<legend><span>Your Account</span></legend>
+				<legend><span>Change My Profile</span></legend>
 					<ol>
 			
     					<li class="string optional" id="person_first_name_input">
+    					<span class="error">#{error 'user.firstname' /}</span>
     					<label for="person_first_name">First Name</label>
-    					<input autocomplete="off" id="person_first_name"  name="user.firstname" size="50" type="text"  />
-    					<p class="inline-hints"><font color = "red"> <span class="error">#{error 'user.firstname' /}</span></font></p>
+    					<input autocomplete="off" id="person_first_name"  name="user.firstname" size="50"  />
     					</li>
     		
     					<li class="string optional" id="person_last_name_input">
+    					<span class="error">#{error 'user.lastname' /}</span>
     					<label for="person_last_name">Last Name</label>
     					<input autocomplete="off" id="person_last_name" maxlength="255" name="user.lastname" size="50" type="text" />
-    					<p class="inline-hints"><font color = "red"> <span class="error">#{error 'user.lastname' /}</span></font></p>
     					</li>
     		
     					<li class="string optional" id="person_user_attributes_email_input">
-    					
+    					<span class="error">#{error 'user.email' /}</span>
     					<label for="person_user_attributes_email">Email</label>
-    					<input autocomplete="off" id="person_user_attributes_email" maxlength="100" name="user.email" size="50" type="text"  />
-    					<p class="inline-hints"><font color = "red"> <span class="error">#{error 'user.email' /}</span></font></p>
+    					<input autocomplete="off" id="person_user_attributes_email" maxlength="100" name="user.email" size="50" />
 						<p class="inline-hints">This will be your username</p>
 						</li>
 						
 						<li class="password optional" id="person_user_attributes_password_input">
+						<span class="error">#{error 'user.password' /}</span>
       					<label for="person_user_attributes_password">Password</label>
       					<input autocomplete="off" id="person_user_attributes_password" name="user.password" size="50" type="password" />
-						<p class="inline-hints"><font color = "red"><span class="error">#{error 'user.password' /}</span></font></p>				
       					</li>
       		
 			

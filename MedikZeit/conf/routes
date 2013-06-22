@@ -12,6 +12,13 @@ POST    /signup                                 Authenticate.doRegister
 GET     /login                                  Authenticate.login
 GET     /logout                                 Authenticate.logout
 GET     /mymedikzeit                            Authenticate.myIndex
+GET 	/calendar				Calendar.index
+
+# Import CRUD routes
+*      /admin              module:crud
+
+# Import Secure routes
+*      /                   module:secure
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
